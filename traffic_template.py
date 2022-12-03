@@ -17,7 +17,7 @@ class Cars:
         self.c  = [] # color
         self.l = [] # lane
         for i in range(numCars):
-            self.x.append(i)        # the position of the cars on the road
+            self.x.append(2*i)        # the position of the cars on the road
             self.v.append(v0)       # the speed of the cars
             self.c.append(i)        # the color of the cars (for drawing)
             self.l.append(0)        # all cars initially start in lane 0 (rightmost lane)
@@ -185,24 +185,35 @@ class MyPropagator(BasePropagator) :
         # Lane change
         if cars.lanes >= 2:
             desired_changes = [0]*cars.numCars
+
+            # Calculate desired lane changes
             for i in range(cars.numCars):
-                # TODO SPEED UP BY ONLY MAKING 1 CALL TO DISTANCE FUNCTIONS AND SAVING DISTANCE IN A LOCAL VARIABLE
-                if cars.distance_forward(i) < cars.vmax[i] and cars.distance_left(i) > cars.distance_forward(i): 
+                distance_forward = cars.distance_forward(i)
+                distance_left = cars.distance_left(i)
+                distance_right = cars.distance_right(i)
+
+                if distance_forward < cars.vmax[i] and distance_left >= distance_forward: 
                     desired_changes[i] = 1
 
-                elif cars.distance_forward(i) > cars.vmax[i] and cars.distance_right(i) > cars.vmax[i]:
+                elif distance_forward > cars.vmax[i] and distance_right > cars.vmax[i]:
                     desired_changes[i] = -1
 
-            
+            # Perform lane changes if allowed
             for i in range(cars.numCars):
                 if desired_changes[i] == 1 and 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
-                    if cars.distance_left_back(i) > cars.velocity_left_back(i):
+                    if cars.distance_left_back(i) >= cars.velocity_left_back(i):
                         cars.l[i] += desired_changes[i]
                 
                 if desired_changes[i] == -1 and 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
-                    if cars.distance_right_back(i) > cars.velocity_right_back(i):
+                    if cars.distance_right_back(i) >= cars.velocity_right_back(i):
                         cars.l[i] += desired_changes[i]
 
+            # Forbid overtakning on the right
+            """
+            for i in range(cars.numCars):
+                distance_left = cars.distance_left(i)
+                if cars.v[i] > distance_left:
+                    cars.v[i] = distance_left"""
 
         # Velocity change
         # 1) Increase velocity if v < vmax
@@ -212,9 +223,9 @@ class MyPropagator(BasePropagator) :
 
         # 2) Decrease velocity if v >= d
         for i in range(cars.numCars):
-            d_i = cars.distance_forward(i)
-            if cars.v[i] >= d_i:
-                cars.v[i] = d_i - 1
+            distance_forward = cars.distance_forward(i)
+            if cars.v[i] >= distance_forward:
+                cars.v[i] = distance_forward - 1
 
         # 3) Randomly reduce velocity 
         for i in range(cars.numCars):
@@ -318,13 +329,13 @@ def main() :
 
     # Be sure you are passing the correct initial conditions!
 
-    cars = Cars(numCars = 10, roadLength=100, lanes=1, vmax=2, sigma=0)
+    cars = Cars(numCars = 10, roadLength=100, lanes=3, vmax=10, sigma=1)
 
     # Create the simulation object for your cars instance:
     simulation = Simulation(cars)
 
     # simulation.run_animate(propagator=ConstantPropagator())
-    simulation.run_animate(propagator=MyPropagator(p=0.25))
+    simulation.run(propagator=MyPropagator(p=0.2))
 
     data = simulation.obs
 
