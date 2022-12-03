@@ -1,18 +1,5 @@
 #!/bin/python3
 
-# Template for traffic simulation
-# BH, MP 2021-11-15, latest version 2022-11-1.
-
-"""
-    This template is used as backbone for the traffic simulations.
-    Its structure resembles the one of the pendulum project, that is you have:
-    (a) a class containing the state of the system and it's parameters
-    (b) a class storing the observables that you want then to plot
-    (c) a class that propagates the state in time (which in this case is discrete), and
-    (d) a class that encapsulates the aforementioned ones and performs the actual simulation
-    You are asked to implement the propagation rule(s) corresponding to the traffic model(s) of the project.
-"""
-
 import math
 import matplotlib.pyplot as plt
 from matplotlib import animation
@@ -114,21 +101,44 @@ class Cars:
         my_lane = self.l[i]
 
         x = x[l==my_lane-1]
-        x = (x- my_pos)%self.roadLength - self.roadLength
+        x = (x - my_pos)%self.roadLength - self.roadLength
         
         if len(x) > 0:
             return abs(max(x))
         else:
-            return True
+            return 10**3
 
 
-    def velocity_right_back(self, i):
-        pass
+    def velocity_back_right(self, i, side):
+        x = np.array(self.x)
+        l = np.array(self.l)
+        v = np.array(self.v)
+        my_pos = self.x[i]
+        my_lane = self.l[i]
+
+        v = v[l==my_lane-1]
+        x = x[l==my_lane-1]
+        if len(x) > 0:
+            idx = np.argmax((x -  my_pos)%self.roadLength)
+            return v[idx]
+        else:
+            return 10**3
 
 
-    def velocity_left_back(self, i):
-        pass
+    def velocity_back_left(self, i, side):
+        x = np.array(self.x)
+        l = np.array(self.l)
+        v = np.array(self.v)
+        my_pos = self.x[i]
+        my_lane = self.l[i]
 
+        v = v[l==my_lane+1]
+        x = x[l==my_lane+1]
+        if len(x) > 0:
+            idx = np.argmax((x -  my_pos)%self.roadLength)
+            return v[idx]
+        else:
+            return 10**3
 
 class Observables:
 
@@ -223,7 +233,6 @@ class MyPropagator(BasePropagator) :
 
         return fr
 
-############################################################################################
 
 def draw_cars(cars, cars_drawing):
 
