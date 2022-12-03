@@ -183,23 +183,25 @@ class MyPropagator(BasePropagator) :
         cars.t += 1
         
         # Lane change
-        desired_changes = [0]*cars.numCars
-        for i in range(cars.numCars):
-            if cars.distance_forward(i) < cars.vmax[i] and cars.distance_left(i) > cars.distance_forward(i): 
-                desired_changes[i] = 1
+        if cars.lanes >= 2:
+            desired_changes = [0]*cars.numCars
+            for i in range(cars.numCars):
+                # TODO SPEED UP BY ONLY MAKING 1 CALL TO DISTANCE FUNCTIONS AND SAVING DISTANCE IN A LOCAL VARIABLE
+                if cars.distance_forward(i) < cars.vmax[i] and cars.distance_left(i) > cars.distance_forward(i): 
+                    desired_changes[i] = 1
 
-            elif cars.distance_forward(i) > cars.vmax[i] and cars.distance_right(i) > cars.vmax[i]:
-                desired_changes[i] = -1
+                elif cars.distance_forward(i) > cars.vmax[i] and cars.distance_right(i) > cars.vmax[i]:
+                    desired_changes[i] = -1
 
-        
-        for i in range(cars.numCars):
-            if desired_changes[i] == 1 and 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
-                if cars.distance_left_back(i) > cars.velocity_left_back(i):
-                    cars.l[i] += desired_changes[i]
             
-            if desired_changes[i] == -1 and 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
-                if cars.distance_right_back(i) > cars.velocity_right_back(i):
-                    cars.l[i] += desired_changes[i]
+            for i in range(cars.numCars):
+                if desired_changes[i] == 1 and 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
+                    if cars.distance_left_back(i) > cars.velocity_left_back(i):
+                        cars.l[i] += desired_changes[i]
+                
+                if desired_changes[i] == -1 and 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
+                    if cars.distance_right_back(i) > cars.velocity_right_back(i):
+                        cars.l[i] += desired_changes[i]
 
 
         # Velocity change
@@ -316,7 +318,7 @@ def main() :
 
     # Be sure you are passing the correct initial conditions!
 
-    cars = Cars(numCars = 10, roadLength=100, lanes=2, vmax=10, sigma=1)
+    cars = Cars(numCars = 10, roadLength=100, lanes=1, vmax=2, sigma=0)
 
     # Create the simulation object for your cars instance:
     simulation = Simulation(cars)
