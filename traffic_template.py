@@ -18,7 +18,6 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 import numpy.random as rng
 import numpy as np
-
 import matplotlib
 
 
@@ -26,26 +25,109 @@ class Cars:
 
     """ Class for the state of a number of cars """
 
-    def __init__(self, numCars=5, roadLength=50, v0=1):
-        self.numCars    = numCars
+    def __init__(self, numCars=5, roadLength=50, v0=1, lanes=3, vmax=5):
+        self.vmax = np.random.normal(vmax, vmax/5, numCars)
+        self.numCars = numCars
         self.roadLength = roadLength
-        self.t  = 0
-        self.x  = []
-        self.v  = []
-        self.c  = []
+        self.lanes = lanes
+        self.t  = 0 
+        self.x  = [] # position
+        self.v  = [] # velocity
+        self.c  = [] # color
+        self.l = [] # lane
         for i in range(numCars):
             self.x.append(i)        # the position of the cars on the road
             self.v.append(v0)       # the speed of the cars
             self.c.append(i)        # the color of the cars (for drawing)
+            self.l.append(0)        # all cars initially start in lane 0 (rightmost lane)
 
-    def distance(self, i):
-        # TODO: Implement the function returning the PERIODIC distance 
-        # between car i and the one in front
-        if i <= self.numCars - 2:
-            return self.x[i+1] - self.x[i]
+
+    def distance_forward(self, i):
+        #if i <= self.numCars - 2:
+        #    return self.x[i+1] - self.x[i]
+        #else:
+        #    return self.x[0] - self.x[-1] + self.roadLength
+        x = np.array(self.x)
+        l = np.array(self.l)
+        my_pos = self.x[i]
+        my_lane = self.l[i]
+
+        x = x[l==my_lane]
+        x = x-my_pos
+        x = x[x != 0]
+
+        if len(x) > 0:
+            return min(x%self.roadLength)
         else:
-            return self.x[0] - self.x[-1] + self.roadLength
-        #return self.x[i+1] - self.x[i] if i<=self.numCars-2 else 100000
+            return 10**3
+
+
+    def distance_left(self, i):
+        x = np.array(self.x)
+        l = np.array(self.l)
+        my_pos = self.x[i]
+        my_lane = self.l[i]
+
+        x = x[l==my_lane+1]
+        x = x-my_pos
+        
+        if len(x) > 0:
+            return min(x%self.roadLength)
+        else:
+            return 10**3
+            
+
+    def distance_right(self, i):
+        x = np.array(self.x)
+        l = np.array(self.l)
+        my_pos = self.x[i]
+        my_lane = self.l[i]
+
+        x = x[l==my_lane-1]
+        x = x-my_pos
+        
+        if len(x) > 0:
+            return min(x%self.roadLength)
+        else:
+            return 10**3
+
+
+    def distance_left_back(self, i):
+        x = np.array(self.x)
+        l = np.array(self.l)
+        my_pos = self.x[i]
+        my_lane = self.l[i]
+
+        x = x[l==my_lane+1]
+        x = (x- my_pos)%self.roadLength - self.roadLength
+        
+        if len(x) > 0:
+            return abs(max(x))
+        else:
+            return 10**3
+
+
+    def distance_right_back(self, i):
+        x = np.array(self.x)
+        l = np.array(self.l)
+        my_pos = self.x[i]
+        my_lane = self.l[i]
+
+        x = x[l==my_lane-1]
+        x = (x- my_pos)%self.roadLength - self.roadLength
+        
+        if len(x) > 0:
+            return abs(max(x))
+        else:
+            return True
+
+
+    def velocity_right_back(self, i):
+        pass
+
+
+    def velocity_left_back(self, i):
+        pass
 
 
 class Observables:
@@ -86,44 +168,44 @@ class BasePropagator:
         """ Virtual method: implemented by the child classes """
         
         pass
-      
-        
-class ConstantPropagator(BasePropagator) :
-    
-    """ 
-        Cars do not interact: each position is just 
-        updated using the corresponding velocity 
-    """
-    
-    def timestep(self, cars, obs):
-        for i in range(cars.numCars):
-            cars.x[i] += cars.v[i]
-        cars.t += 1
-        return 0 # Behöver ändras??
 
-# TODO
-# HERE YOU SHOULD IMPLEMENT THE DIFFERENT CAR BEHAVIOR RULES
-# Define you own class which inherits from BasePropagator (e.g. MyPropagator(BasePropagator))
-# and implement timestep according to the rule described in the project
+
 class MyPropagator(BasePropagator) :
 
-    def __init__(self, vmax, p):
+    def __init__(self, p):
         BasePropagator.__init__(self)
-        self.vmax = vmax
         self.p = p
 
     def timestep(self, cars, obs):
-        # TODO Here you should implement the car behaviour rules
         cars.t += 1
+        
+        # Lane change
+        desired_changes = [0]*cars.numCars
+        for i in range(cars.numCars):
+            distance_forward = cars.distance_forward(i)
+            distance_left = cars.distance_left(i)
+            distance_right = cars.distance_right(i)
 
+            if distance_forward < cars.vmax[i] and distance_left > distance_forward: #distance_forward
+                desired_changes[i] = 1
+
+            elif distance_forward > cars.vmax[i] and distance_right > distance_forward:#self.vmax
+                desired_changes[i] = -1
+
+        
+        for i in range(cars.numCars):
+            if 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
+                cars.l[i] += desired_changes[i]
+
+        # Velocity change
         # 1) Increase velocity if v < vmax
         for i in range(cars.numCars):
-            if cars.v[i] < self.vmax:
+            if cars.v[i] < cars.vmax[i]:
                 cars.v[i] += 1
 
         # 2) Decrease velocity if v >= d
         for i in range(cars.numCars):
-            d_i = cars.distance(i)
+            d_i = cars.distance_forward(i)
             if cars.v[i] >= d_i:
                 cars.v[i] = d_i - 1
 
@@ -149,11 +231,12 @@ def draw_cars(cars, cars_drawing):
     theta = []
     r     = []
 
-    for position in cars.x:
+    #for position in cars.x:
+    for position, lane in zip(cars.x, cars.l):
         # Convert to radians for plotting  only (do not use radians for the simulation!)
         theta.append(position * 2 * math.pi / cars.roadLength)
-        r.append(1)
-
+        #r.append(1)
+        r.append(lane*0.1+1)
     return cars_drawing.scatter(theta, r, c=cars.c, cmap='hsv')
 
 
@@ -175,15 +258,6 @@ class Simulation:
 
     def __init__(self, cars=Cars()) :
         self.reset(cars)
-
-    def plot_observables(self, title="simulation"):
-        plt.clf()
-        plt.title(title)
-        plt.plot(self.obs.time, self.obs.flowrate)
-        plt.xlabel('time')
-        plt.ylabel('flow rate')
-        plt.savefig(title + ".pdf")
-        plt.show()
 
     # Run without displaying any animation (fast)
     def run(self,
@@ -221,14 +295,12 @@ class Simulation:
         # Call the animator, blit=False means re-draw everything
         anim = animation.FuncAnimation(plt.gcf(), animate,  # init_func=init,
                                        fargs=[self.cars,self.obs,propagator,ax,stepsperframe],
-                                       frames=numframes, interval=50, blit=True, repeat=False)
+                                       frames=numframes, interval=300, blit=True, repeat=False)
         plt.show()
 
         # If you experience problems visualizing the animation and/or
         # the following figures comment out the next line 
         # plt.waitforbuttonpress(30)
-
-        self.plot_observables(title)
     
 
 # It's good practice to encapsulate the script execution in 
@@ -239,19 +311,18 @@ def main() :
     # and pass them to the simulator 
 
     # Be sure you are passing the correct initial conditions!
-    cars = Cars(numCars = 5, roadLength=50)
+
+    cars = Cars(numCars = 10, roadLength=100, lanes=1)
 
     # Create the simulation object for your cars instance:
     simulation = Simulation(cars)
 
     # simulation.run_animate(propagator=ConstantPropagator())
-    simulation.run_animate(propagator=MyPropagator(vmax=5, p=0.2))
+    simulation.run_animate(propagator=MyPropagator(p=0.1))
 
     data = simulation.obs
 
-    pos = np.array(data.position)
 
-    print(pos[-1])
 
 
 # Calling 'main()' if the script is executed.
