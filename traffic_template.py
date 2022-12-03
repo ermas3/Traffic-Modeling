@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 import numpy.random as rng
 import numpy as np
-import matplotlib
+
 
 class Cars:
-    def __init__(self, numCars=5, roadLength=50, v0=1, lanes=3, vmax=5):
-        self.vmax = np.random.normal(vmax, vmax/5, numCars)
+    def __init__(self, numCars=5, roadLength=50, v0=1, lanes=3, vmax=5, sigma=1):
+        self.vmax = np.random.normal(vmax, sigma, numCars)
         self.numCars = numCars
         self.roadLength = roadLength
         self.lanes = lanes
@@ -316,15 +316,18 @@ def main() :
 
     # Be sure you are passing the correct initial conditions!
 
-    cars = Cars(numCars = 10, roadLength=100, lanes=3)
+    cars = Cars(numCars = 10, roadLength=100, lanes=2, vmax=10, sigma=1)
 
     # Create the simulation object for your cars instance:
     simulation = Simulation(cars)
 
     # simulation.run_animate(propagator=ConstantPropagator())
-    simulation.run_animate(propagator=MyPropagator(p=0.1))
+    simulation.run_animate(propagator=MyPropagator(p=0.25))
 
     data = simulation.obs
+
+    plt.plot(data.time, data.flowrate)
+    plt.show()
 
 
 
