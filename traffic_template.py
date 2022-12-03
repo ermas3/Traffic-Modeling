@@ -1,5 +1,3 @@
-#!/bin/python3
-
 import math
 import matplotlib.pyplot as plt
 from matplotlib import animation
@@ -7,11 +5,7 @@ import numpy.random as rng
 import numpy as np
 import matplotlib
 
-
 class Cars:
-
-    """ Class for the state of a number of cars """
-
     def __init__(self, numCars=5, roadLength=50, v0=1, lanes=3, vmax=5):
         self.vmax = np.random.normal(vmax, vmax/5, numCars)
         self.numCars = numCars
@@ -27,7 +21,6 @@ class Cars:
             self.v.append(v0)       # the speed of the cars
             self.c.append(i)        # the color of the cars (for drawing)
             self.l.append(0)        # all cars initially start in lane 0 (rightmost lane)
-
 
     def distance_forward(self, i):
         #if i <= self.numCars - 2:
@@ -109,7 +102,7 @@ class Cars:
             return 10**3
 
 
-    def velocity_back_right(self, i, side):
+    def velocity_right_back(self, i):
         x = np.array(self.x)
         l = np.array(self.l)
         v = np.array(self.v)
@@ -122,10 +115,10 @@ class Cars:
             idx = np.argmax((x -  my_pos)%self.roadLength)
             return v[idx]
         else:
-            return 10**3
+            return 0 
 
 
-    def velocity_back_left(self, i, side):
+    def velocity_left_back(self, i):
         x = np.array(self.x)
         l = np.array(self.l)
         v = np.array(self.v)
@@ -138,7 +131,7 @@ class Cars:
             idx = np.argmax((x -  my_pos)%self.roadLength)
             return v[idx]
         else:
-            return 10**3
+            return 0
 
 class Observables:
 
@@ -192,20 +185,22 @@ class MyPropagator(BasePropagator) :
         # Lane change
         desired_changes = [0]*cars.numCars
         for i in range(cars.numCars):
-            distance_forward = cars.distance_forward(i)
-            distance_left = cars.distance_left(i)
-            distance_right = cars.distance_right(i)
-
-            if distance_forward < cars.vmax[i] and distance_left > distance_forward: #distance_forward
+            if cars.distance_forward(i) < cars.vmax[i] and cars.distance_left(i) > cars.distance_forward(i): 
                 desired_changes[i] = 1
 
-            elif distance_forward > cars.vmax[i] and distance_right > distance_forward:#self.vmax
+            elif cars.distance_forward(i) > cars.vmax[i] and cars.distance_right(i) > cars.vmax[i]:
                 desired_changes[i] = -1
 
         
         for i in range(cars.numCars):
-            if 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
-                cars.l[i] += desired_changes[i]
+            if desired_changes[i] == 1 and 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
+                if cars.distance_left_back(i) > cars.velocity_left_back(i):
+                    cars.l[i] += desired_changes[i]
+            
+            if desired_changes[i] == -1 and 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
+                if cars.distance_right_back(i) > cars.velocity_right_back(i):
+                    cars.l[i] += desired_changes[i]
+
 
         # Velocity change
         # 1) Increase velocity if v < vmax
@@ -245,7 +240,7 @@ def draw_cars(cars, cars_drawing):
         # Convert to radians for plotting  only (do not use radians for the simulation!)
         theta.append(position * 2 * math.pi / cars.roadLength)
         #r.append(1)
-        r.append(lane*0.1+1)
+        r.append(1 - lane*0.1)
     return cars_drawing.scatter(theta, r, c=cars.c, cmap='hsv')
 
 
@@ -304,7 +299,7 @@ class Simulation:
         # Call the animator, blit=False means re-draw everything
         anim = animation.FuncAnimation(plt.gcf(), animate,  # init_func=init,
                                        fargs=[self.cars,self.obs,propagator,ax,stepsperframe],
-                                       frames=numframes, interval=300, blit=True, repeat=False)
+                                       frames=numframes, interval=500, blit=True, repeat=False)
         plt.show()
 
         # If you experience problems visualizing the animation and/or
@@ -321,7 +316,7 @@ def main() :
 
     # Be sure you are passing the correct initial conditions!
 
-    cars = Cars(numCars = 10, roadLength=100, lanes=1)
+    cars = Cars(numCars = 10, roadLength=100, lanes=3)
 
     # Create the simulation object for your cars instance:
     simulation = Simulation(cars)
