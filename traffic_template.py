@@ -6,27 +6,24 @@ import numpy as np
 
 
 class Cars:
-    def __init__(self, numCars=5, roadLength=50, v0=1, lanes=3, vmax=5, sigma=1):
-        self.vmax = np.random.normal(vmax, sigma, numCars)
+    def __init__(self, numCars=5, roadLength=50, v0=0, lanes=3, vmax=5, sigma=1):
+        randomized_velocities = np.random.normal(vmax, sigma, numCars)
+        self.vmax = rounded_integer_array = (np.rint(randomized_velocities)).astype(int)
         self.numCars = numCars
         self.roadLength = roadLength
         self.lanes = lanes
-        self.t  = 0 
-        self.x  = [] # position
-        self.v  = [] # velocity
-        self.c  = [] # color
-        self.l = [] # lane
+        self.t  = 0
+        self.x  = []
+        self.v  = []
+        self.c  = []
+        self.l = []
         for i in range(numCars):
-            self.x.append(2*i)        # the position of the cars on the road
-            self.v.append(v0)       # the speed of the cars
-            self.c.append(i)        # the color of the cars (for drawing)
-            self.l.append(0)        # all cars initially start in lane 0 (rightmost lane)
+            self.x.append(i)
+            self.v.append(v0)
+            self.c.append(i)
+            self.l.append(0)
 
     def distance_forward(self, i):
-        #if i <= self.numCars - 2:
-        #    return self.x[i+1] - self.x[i]
-        #else:
-        #    return self.x[0] - self.x[-1] + self.roadLength
         x = np.array(self.x)
         l = np.array(self.l)
         my_pos = self.x[i]
@@ -39,7 +36,7 @@ class Cars:
         if len(x) > 0:
             return min(x%self.roadLength)
         else:
-            return 10**3
+            return 10**4
 
 
     def distance_left(self, i):
@@ -54,7 +51,7 @@ class Cars:
         if len(x) > 0:
             return min(x%self.roadLength)
         else:
-            return 10**3
+            return 10**4
             
 
     def distance_right(self, i):
@@ -69,7 +66,7 @@ class Cars:
         if len(x) > 0:
             return min(x%self.roadLength)
         else:
-            return 10**3
+            return 10**4
 
 
     def distance_left_back(self, i):
@@ -84,7 +81,7 @@ class Cars:
         if len(x) > 0:
             return abs(max(x))
         else:
-            return 10**3
+            return 10**4
 
 
     def distance_right_back(self, i):
@@ -99,7 +96,7 @@ class Cars:
         if len(x) > 0:
             return abs(max(x))
         else:
-            return 10**3
+            return 10**4
 
 
     def velocity_right_back(self, i):
@@ -112,10 +109,10 @@ class Cars:
         v = v[l==my_lane-1]
         x = x[l==my_lane-1]
         if len(x) > 0:
-            idx = np.argmax((x -  my_pos)%self.roadLength)
+            idx = np.argmax((x - my_pos)%self.roadLength)
             return v[idx]
         else:
-            return 0 
+            return -1 
 
 
     def velocity_left_back(self, i):
@@ -128,10 +125,10 @@ class Cars:
         v = v[l==my_lane+1]
         x = x[l==my_lane+1]
         if len(x) > 0:
-            idx = np.argmax((x -  my_pos)%self.roadLength)
+            idx = np.argmax((x - my_pos)%self.roadLength)
             return v[idx]
         else:
-            return 0
+            return -1
 
 class Observables:
 
@@ -144,6 +141,7 @@ class Observables:
         # Tillagt av mig
         self.position = []
         self.velocity = []
+        self.lanes = []
         
 
 class BasePropagator:
@@ -159,11 +157,12 @@ class BasePropagator:
 
         # Append observables to their lists
         obs.time.append(cars.t)
-        obs.flowrate.append(fr)  # CHANGE!
+        obs.flowrate.append(fr)
 
         # Tillagt av mig
         obs.position.append(cars.x.copy())
         obs.velocity.append(cars.v.copy())
+        obs.lanes.append(cars.l.copy())
 
               
     def timestep(self, cars, obs):
@@ -183,6 +182,7 @@ class MyPropagator(BasePropagator) :
         cars.t += 1
         
         # Lane change
+        #print(cars.v)
         if cars.lanes >= 2:
             desired_changes = [0]*cars.numCars
 
@@ -192,28 +192,25 @@ class MyPropagator(BasePropagator) :
                 distance_left = cars.distance_left(i)
                 distance_right = cars.distance_right(i)
 
-                if distance_forward < cars.vmax[i] and distance_left >= distance_forward: 
+                if distance_forward < cars.vmax[i] and distance_left >= distance_forward and cars.l[i] < cars.lanes - 1: 
                     desired_changes[i] = 1
 
-                elif distance_forward > cars.vmax[i] and distance_right > cars.vmax[i]:
+                elif distance_forward > cars.vmax[i] and distance_right > cars.vmax[i] and cars.l[i] >= 1:
                     desired_changes[i] = -1
+
+                elif distance_right > distance_forward and np.random.rand() > 0.05:
+                    desired_changes[i] = -1
+
 
             # Perform lane changes if allowed
             for i in range(cars.numCars):
                 if desired_changes[i] == 1 and 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
-                    if cars.distance_left_back(i) >= cars.velocity_left_back(i):
+                    if cars.distance_left_back(i) > cars.velocity_left_back(i): #>= eller >??
                         cars.l[i] += desired_changes[i]
                 
                 if desired_changes[i] == -1 and 0 <= cars.l[i] + desired_changes[i] <= cars.lanes - 1:
-                    if cars.distance_right_back(i) >= cars.velocity_right_back(i):
+                    if cars.distance_right_back(i) > cars.velocity_right_back(i): #>= eller >??
                         cars.l[i] += desired_changes[i]
-
-            # Forbid overtakning on the right
-            """
-            for i in range(cars.numCars):
-                distance_left = cars.distance_left(i)
-                if cars.v[i] > distance_left:
-                    cars.v[i] = distance_left"""
 
         # Velocity change
         # 1) Increase velocity if v < vmax
@@ -221,7 +218,14 @@ class MyPropagator(BasePropagator) :
             if cars.v[i] < cars.vmax[i]:
                 cars.v[i] += 1
 
-        # 2) Decrease velocity if v >= d
+        # 2) Decrease velocity if v >= d and forbid overtaking
+        """for i in range(cars.numCars):
+            distance_forward = cars.distance_forward(i)
+            distance_left = cars.distance_left(i)
+            if cars.v[i] >= distance_forward or cars.v[i] > distance_left:
+                cars.v[i] = min(distance_forward - 1, distance_left)"""
+
+        # 2) Decrease velocity if v >= d       
         for i in range(cars.numCars):
             distance_forward = cars.distance_forward(i)
             if cars.v[i] >= distance_forward:
@@ -234,7 +238,7 @@ class MyPropagator(BasePropagator) :
     
         # 4) Update positions
         for i in range(cars.numCars):
-            cars.x[i] += cars.v[i]
+            cars.x[i] = (cars.x[i] + (cars.v[i]))%cars.roadLength
         
         # Calculate and return flow rate
         fr = sum(cars.v)/cars.roadLength
@@ -329,13 +333,13 @@ def main() :
 
     # Be sure you are passing the correct initial conditions!
 
-    cars = Cars(numCars = 10, roadLength=100, lanes=3, vmax=10, sigma=1)
+    cars = Cars(numCars = 80, roadLength=100, lanes=3, vmax=10, sigma=1)
 
     # Create the simulation object for your cars instance:
     simulation = Simulation(cars)
 
     # simulation.run_animate(propagator=ConstantPropagator())
-    simulation.run(propagator=MyPropagator(p=0.2))
+    simulation.run_animate(propagator=MyPropagator(p=0.2), numsteps=500)
 
     data = simulation.obs
 
