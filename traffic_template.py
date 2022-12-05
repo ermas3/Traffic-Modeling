@@ -8,20 +8,20 @@ import numpy as np
 class Cars:
     def __init__(self, numCars=5, roadLength=50, v0=0, lanes=3, vmax=5, sigma=1):
         randomized_velocities = np.random.normal(vmax, sigma, numCars)
-        self.vmax = rounded_integer_array = (np.rint(randomized_velocities)).astype(int)
+        self.vmax = (np.rint(randomized_velocities)).astype(int)
         self.numCars = numCars
         self.roadLength = roadLength
         self.lanes = lanes
         self.t  = 0
         self.x  = []
         self.v  = []
-        self.c  = []
+        self.c  = [] # color of cars
         self.l = []
         for i in range(numCars):
             self.x.append(i)
             self.v.append(v0)
             self.c.append(i)
-            self.l.append(0)
+            self.l.append(i%lanes) # Kanske borde ändra detta för att förebygga att alla bilar försöker vända åt vänster i början?
 
     def distance_forward(self, i):
         x = np.array(self.x)
@@ -174,15 +174,15 @@ class BasePropagator:
 
 class MyPropagator(BasePropagator) :
 
-    def __init__(self, p):
+    def __init__(self, p, right_overtaking=True):
         BasePropagator.__init__(self)
         self.p = p
+        self.right_overtaking = right_overtaking
 
     def timestep(self, cars, obs):
         cars.t += 1
         
         # Lane change
-        #print(cars.v)
         if cars.lanes >= 2:
             desired_changes = [0]*cars.numCars
 
@@ -218,18 +218,20 @@ class MyPropagator(BasePropagator) :
             if cars.v[i] < cars.vmax[i]:
                 cars.v[i] += 1
 
-        # 2) Decrease velocity if v >= d and forbid overtaking
-        """for i in range(cars.numCars):
-            distance_forward = cars.distance_forward(i)
-            distance_left = cars.distance_left(i)
-            if cars.v[i] >= distance_forward or cars.v[i] > distance_left:
-                cars.v[i] = min(distance_forward - 1, distance_left)"""
+        # 2) Decrease velocity if v >= d and forbid right side overtaking
+        if not self.right_overtaking:
+            for i in range(cars.numCars):
+                distance_forward = cars.distance_forward(i)
+                distance_left = cars.distance_left(i)
+                if cars.v[i] >= distance_forward or cars.v[i] > distance_left:
+                    cars.v[i] = min(distance_forward - 1, distance_left)
 
-        # 2) Decrease velocity if v >= d       
-        for i in range(cars.numCars):
-            distance_forward = cars.distance_forward(i)
-            if cars.v[i] >= distance_forward:
-                cars.v[i] = distance_forward - 1
+        # 2) Decrease velocity if v >= d and allow right side overtaking
+        if self.right_overtaking:    
+            for i in range(cars.numCars):
+                distance_forward = cars.distance_forward(i)
+                if cars.v[i] >= distance_forward:
+                    cars.v[i] = distance_forward - 1
 
         # 3) Randomly reduce velocity 
         for i in range(cars.numCars):
@@ -298,7 +300,6 @@ class Simulation:
         for it in range(numsteps):
             propagator.propagate(self.cars, self.obs)
 
-        #self.plot_observables(title)
 
     # Run while displaying the animation of bunch of cars going in circe (slow-ish)
     def run_animate(self,
@@ -316,7 +317,7 @@ class Simulation:
         # Call the animator, blit=False means re-draw everything
         anim = animation.FuncAnimation(plt.gcf(), animate,  # init_func=init,
                                        fargs=[self.cars,self.obs,propagator,ax,stepsperframe],
-                                       frames=numframes, interval=500, blit=True, repeat=False)
+                                       frames=numframes, interval=200, blit=True, repeat=False)
         plt.show()
 
         # If you experience problems visualizing the animation and/or
@@ -324,16 +325,8 @@ class Simulation:
         # plt.waitforbuttonpress(30)
     
 
-# It's good practice to encapsulate the script execution in 
-# a main() function (e.g. for profiling reasons)
 def main() :
-
-    # Here you can define one or more instances of cars, with possibly different parameters, 
-    # and pass them to the simulator 
-
-    # Be sure you are passing the correct initial conditions!
-
-    cars = Cars(numCars = 80, roadLength=100, lanes=3, vmax=10, sigma=1)
+    cars = Cars(numCars = 30, roadLength=200, lanes=3, vmax=10, sigma=1)
 
     # Create the simulation object for your cars instance:
     simulation = Simulation(cars)
@@ -347,11 +340,6 @@ def main() :
     plt.show()
 
 
-
-
-# Calling 'main()' if the script is executed.
-# If the script is instead just imported, main is not called (this can be useful if you want to
-# write another script importing and utilizing the functions and classes defined in this one)
 if __name__ == "__main__" :
     main()
 
