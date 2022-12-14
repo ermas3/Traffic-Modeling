@@ -18,9 +18,9 @@
 \section*{Problem description}
 A multi-lane highway is going to be simulated using a cellular automata model, in order to study how the amount of lanes affects the flow rate for different car densities. We would also
 like to study the fluctuations of the flow rate, and investigate wether varying the amount of lanes can affect the fluctuations of the flow rate.
-\section*{Model}
+\section*{Model description}
 The model of the highway was implemented as a cellular automata on a road with some integer distance $L$ where each car on the road occupies $1$ length unit of the road. 
-The road does not have an end nor a beginning meaning that the distances to the surrounding cars were calculated as period distances.
+The road used periodic boundary conditions, meaning that the road does not have an end nor a beginning. The between the cars therefore also had to be calculated as periodic distances.
 In order to make the dynamics of the simulation more realistic all cars were given personal maximum velocity $v_{i,max}$. The value of $v_{i, max}$ for each car was randomly generated 
 as a rounded value taken from a Gaussian distribution around some mean value $\mu$, where $\mu$ would represent the speed limit on the road A Gaussian distribution of the values of $v_{i, max}$ thus
 seems logical since in real life most cars drive at approximately the speed limit even though a few cars drive much faster or slower.
@@ -66,6 +66,21 @@ Most rules above are quite logical, and result in a behaviour of the cars that a
 clarification. Without rule (3) mostly the left lane becomes occupied for higher car densities. In order to solve this rule (3) creates
 a bias towards changing to the right lane which solves the problem.
 
+\subsection*{Model discussion}
+
+In order to construct the above model several assumptions have been made. For example, the drivers have been assumed to be quite skilled
+since a car will never perform a lane change if that means that a car behind will have to brake. In real life, this is of course true for some drivers 
+but certainly not all.
+
+Another assumption that has to be made since we are using the cellular automata is the fact that drivers only base their decisions on the current state. In other words, 
+the drivers can never plan their driving in a way that skilled drivers would to in real life. For example ....
+
+Another important aspect to mention are the possible consequences of using the period boundary conditions. When using period boundary conditions there is a risk
+that a car might detect itself as the car in front. The car would then calculate the period distance to itself and adjust it's speed accordingly. 
+This is, of course, highly unrealistic and something we must be aware of when using the period boundary conditions. In order to reduce the risk of this happening
+very short road lengths $L$ were avoided when running the simulation.
+
+% diskutera hur diskretiseringen av rum och tid kan påverka!!
 
 \section*{Problem}
 
