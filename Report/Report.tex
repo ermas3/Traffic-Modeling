@@ -9,22 +9,63 @@
 \newgeometry{vmargin={25.4mm}, hmargin={27mm,27mm}}
 \setlength\parindent{0pt}   % Disable paragraph indent.
 
-\title{Simulation of multi-lane highway using cellular automata}
+\title{Simulation of multi-lane highway using cellular automata model}
 \author{Erik Åsgrim}
 
 \begin{document}
 \maketitle
 
+\section*{Problem description}
+A multi-lane highway is going to be simulated using a cellular automata model, in order to study how the amount of lanes affects the flow rate for different car densities. We would also
+like to study the fluctuations of the flow rate, and investigate wether varying the amount of lanes can affect the fluctuations of the flow rate.
 \section*{Model}
-The rules for the cellular automata were performed in two different parts at each time steps.
-First lane changes were performed and then velocity changes were performed. Each rule was implemented for every car before
-moving on to the next rule. The order of the rules matter, as latter rules can 'overrule' previous decisions.
+The model of the highway was implemented as a cellular automata on a road with some integer distance $L$ where each car on the road occupies $1$ length unit of the road. 
+The road does not have an end nor a beginning meaning that the distances to the surrounding cars were calculated as period distances.
+In order to make the dynamics of the simulation more realistic all cars were given personal maximum velocity $v_{i,max}$. The value of $v_{i, max}$ for each car was randomly generated 
+as a rounded value taken from a Gaussian distribution around some mean value $\mu$, where $\mu$ would represent the speed limit on the road A Gaussian distribution of the values of $v_{i, max}$ thus
+seems logical since in real life most cars drive at approximately the speed limit even though a few cars drive much faster or slower.
 
+The rules for the cellular automata were performed in two different parts at each time step.
+First, rules determining what lane changes are going to be performed are implemented. This was done by first calculating desired lane change of each car and then
+performing the desired lane change only if the lane change can be performed safely.
+Secondly, rules determining how the various cars are going to change their velocity are implemented.
+Each rule was implemeted simulatenously on each car before moving on to the next rule. This means that the ordering of the rules is very important, as latter rules can 'overrule' previous decisions.
+In order to make the rules more compact we also introduce the following notation
+
+\begin{itemize}
+    \item $x_i$ is the position of the i:th car
+    \item $v_i$ is the velocity of the i:th car
+    \item $v_{i, max}$ is the maximum veloctiy of the i:th car.
+    \item $v_{back}$ is the velocity to the next car backward in the \textbf{new lane} we would like to change to.
+    \item $d_{forward}$ is the distance forward to the next car in the same lane we are currently in.
+    \item $d_{forward, left}$ is the distance forward to the next car in the lane to the left.
+    \item $d_{forward, right}$ is the distance forward to the next car in the lane to the right.
+    \item $d_{backward}$ is the distance backward to next car in the \textbf{new lane} we would like to change to.
+\end{itemize}
+
+Using the above notation the rules of the cellular automata were implemnted as follows:
+
+\textbf{Lane changes}
 \begin{enumerate}
-    \item If 
-    \item Two
-    \item Three
+    \item If $v_i<v_{i,max}$ and $d_{forward, left}\geq d_{forward}$ and there exists a lane to the left, desire a lane change from right to left
+    \item If $d_{forward} > v_{i, max}$ and $d_{forward, right} > v_{i, max}$ and there exists a lane to the right, desire a lane change from left to right
+    \item If $d_{forward, right} > d_{forward}$ and no previous lane change desire exists, desire a lane change from left to right with $5\%$ probability
+    \item If $d_{backward} > v_{back}$ perform desired lane change (car behind should not need to brake because of lane change)
 \end{enumerate}
+
+\textbf{Velocity changes}
+\begin{enumerate}
+    \setcounter{enumi}{4}
+    \item If $v_i<v_{i, max}$ increase velocity as $v_i \rightarrow v_i+1$ (try to accelerate to maximum velocity)
+    \item If $v \geq d_{forward}$ decrease velocity as $v = d_{forward} - 1$ (avoid collisions)
+    \item With some probability $p$ decrease velocity as $v_i=v_i-1$ (cars might brake randomly)
+    \item Update position as $x_i(t+1) = x_i(t) + v_i$
+\end{enumerate}
+
+Most rules above are quite logical, and result in a behaviour of the cars that appears natural. Rule (3) might however need some
+clarification. Without rule (3) mostly the left lane becomes occupied for higher car densities. In order to solve this rule (3) creates
+a bias towards changing to the right lane which solves the problem.
+
 
 \section*{Problem}
 
