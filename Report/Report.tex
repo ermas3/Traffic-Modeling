@@ -15,10 +15,11 @@
 \begin{document}
 \maketitle
 
-\section*{Problem description}
+\section*{Introduction}
+\subsection*{Background}
 A multi-lane highway is going to be simulated using a cellular automata model, in order to study how the amount of lanes affects the flow rate for different car densities. We would also
-like to study the fluctuations of the flow rate, and investigate wether varying the amount of lanes can affect the fluctuations of the flow rate.
-\section*{Model description}
+like to study the fluctuations of the flow rate, and investigate whether varying the amount of lanes can affect the fluctuations of the flow rate.
+\subsection*{Model description}
 The model of the highway was implemented as a cellular automata on a road with some integer distance $L$ where each car on the road occupies $1$ length unit of the road. 
 The road used periodic boundary conditions, meaning that the road does not have an end nor a beginning. The between the cars therefore also had to be calculated as periodic distances.
 In order to make the dynamics of the simulation more realistic all cars were given personal maximum velocity $v_{i,max}$. The value of $v_{i, max}$ for each car was randomly generated 
@@ -29,13 +30,13 @@ The rules for the cellular automata were performed in two different parts at eac
 First, rules determining what lane changes are going to be performed are implemented. This was done by first calculating desired lane change of each car and then
 performing the desired lane change only if the lane change can be performed safely.
 Secondly, rules determining how the various cars are going to change their velocity are implemented.
-Each rule was implemeted simulatenously on each car before moving on to the next rule. This means that the ordering of the rules is very important, as latter rules can 'overrule' previous decisions.
+Each rule was implemented simultaneously on each car before moving on to the next rule. This means that the ordering of the rules is very important, as latter rules can 'overrule' previous decisions.
 In order to make the rules more compact we also introduce the following notation
 
 \begin{itemize}
     \item $x_i$ is the position of the i:th car
     \item $v_i$ is the velocity of the i:th car
-    \item $v_{i, max}$ is the maximum veloctiy of the i:th car.
+    \item $v_{i, max}$ is the maximum velocity of the i:th car.
     \item $v_{back}$ is the velocity to the next car backward in the \textbf{new lane} we would like to change to.
     \item $d_{forward}$ is the distance forward to the next car in the same lane we are currently in.
     \item $d_{forward, left}$ is the distance forward to the next car in the lane to the left.
@@ -43,8 +44,9 @@ In order to make the rules more compact we also introduce the following notation
     \item $d_{backward}$ is the distance backward to next car in the \textbf{new lane} we would like to change to.
 \end{itemize}
 
-Using the above notation the rules of the cellular automata were implemnted as follows:
+Using the above notation the rules of the cellular automata were implemented as follows:
 
+\vspace{5pt}
 \textbf{Lane changes}
 \begin{enumerate}
     \item If $v_i<v_{i,max}$ and $d_{forward, left}\geq d_{forward}$ and there exists a lane to the left, desire a lane change from right to left
@@ -62,9 +64,32 @@ Using the above notation the rules of the cellular automata were implemnted as f
     \item Update position as $x_i(t+1) = x_i(t) + v_i$
 \end{enumerate}
 
-Most rules above are quite logical, and result in a behaviour of the cars that appears natural. Rule (3) might however need some
+Most rules above are quite logical and result in a behavior of the cars that appears natural. Rule (3) might however need some
 clarification. Without rule (3) mostly the left lane becomes occupied for higher car densities. In order to solve this rule (3) creates
 a bias towards changing to the right lane which solves the problem.
+
+% diskutera hur diskretiseringen av rum och tid kan påverka!!
+
+\section*{Problem}
+How does the average flow rate depend on the car density when
+\section*{Results}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[scale=0.45]{Images/flowrate time 10 cars.png}
+        \captionof*{figure}{a) 10 cars}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[scale=0.45]{Images/flowrate time 20 cars.png}
+        \captionof*{figure}{b) 20 cars}
+    \end{minipage}
+    \caption{}
+    \label{3.2d}
+\end{figure}
+
 
 \subsection*{Model discussion}
 
@@ -76,18 +101,7 @@ Another assumption that has to be made since we are using the cellular automata 
 the drivers can never plan their driving in a way that skilled drivers would to in real life. For example ....
 
 Another important aspect to mention are the possible consequences of using the period boundary conditions. When using period boundary conditions there is a risk
-that a car might detect itself as the car in front. The car would then calculate the period distance to itself and adjust it's speed accordingly. 
+that a car might detect itself as the car in front. The car would then calculate the period distance to itself and adjust its speed accordingly. 
 This is, of course, highly unrealistic and something we must be aware of when using the period boundary conditions. In order to reduce the risk of this happening
 very short road lengths $L$ were avoided when running the simulation.
-
-% diskutera hur diskretiseringen av rum och tid kan påverka!!
-
-\section*{Problem}
-
-\section*{Method}
-
-\section*{Results}
-
-\section*{Discussion}
-
 \end{document}

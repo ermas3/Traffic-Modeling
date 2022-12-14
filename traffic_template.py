@@ -317,7 +317,7 @@ class Simulation:
         # Call the animator, blit=False means re-draw everything
         anim = animation.FuncAnimation(plt.gcf(), animate,  # init_func=init,
                                        fargs=[self.cars,self.obs,propagator,ax,stepsperframe],
-                                       frames=numframes, interval=200, blit=True, repeat=False)
+                                       frames=numframes, interval=600, blit=True, repeat=False)
         plt.show()
 
         # If you experience problems visualizing the animation and/or
@@ -326,13 +326,13 @@ class Simulation:
     
 
 def main() :
-    cars = Cars(numCars = 30, roadLength=200, lanes=3, vmax=10, sigma=1)
+    cars = Cars(numCars = 70, roadLength=200, lanes=3, vmax=10, sigma=2)
 
     # Create the simulation object for your cars instance:
     simulation = Simulation(cars)
 
     # simulation.run_animate(propagator=ConstantPropagator())
-    simulation.run_animate(propagator=MyPropagator(p=0.2), numsteps=500)
+    simulation.run_animate(propagator=MyPropagator(p=0.2, right_overtaking=True), numsteps=500)
 
     data = simulation.obs
 
