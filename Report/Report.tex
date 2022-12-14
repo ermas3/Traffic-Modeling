@@ -64,33 +64,65 @@ Using the above notation the rules of the cellular automata were implemented as 
     \item Update position as $x_i(t+1) = x_i(t) + v_i$
 \end{enumerate}
 
+% Om det får plats, förklara logiken mer ingående av varje regel.
 Most rules above are quite logical and result in a behavior of the cars that appears natural. Rule (3) might however need some
 clarification. Without rule (3) mostly the left lane becomes occupied for higher car densities. In order to solve this rule (3) creates
 a bias towards changing to the right lane which solves the problem.
 
 % diskutera hur diskretiseringen av rum och tid kan påverka!!
 
-\section*{Problem}
-How does the average flow rate depend on the car density when
-\section*{Results}
+\section*{Problem description}
+The purpose of this report is to simulate a multi-lane highway and compare how the flow rate is affected by varying the number
+of lanes. We would like to examine how the flow rate depends on the car density for different amount of lanes and investigate whether
+the fluctuations of the flow rate depends on the amount of lanes.
 
+\section*{Method}
+Initially the 
+
+\section*{Results}
 \begin{figure}[H]
     \centering
     \begin{minipage}{.5\textwidth}
         \centering
-        \includegraphics[scale=0.45]{Images/flowrate time 10 cars.png}
+        \includegraphics[scale=0.47]{Images/flowrate time 10 cars.png}
         \captionof*{figure}{a) 10 cars}
     \end{minipage}%
     \begin{minipage}{.5\textwidth}
         \centering
-        \includegraphics[scale=0.45]{Images/flowrate time 20 cars.png}
+        \includegraphics[scale=0.47]{Images/flowrate time 20 cars.png}
         \captionof*{figure}{b) 20 cars}
     \end{minipage}
-    \caption{}
-    \label{3.2d}
+    \centering
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[scale=0.47]{Images/flowrate time 30 cars.png}
+        \captionof*{figure}{c) 30 cars}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[scale=0.47]{Images/flowrate time 40 cars.png}
+        \captionof*{figure}{d) 40 cars}
+    \end{minipage}
+    \caption{Flowrate plotted against time using different number of cars.}
+    \label{flowrate}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.9]{Images/fundamental diagram.png}
+    \caption{Average flow rate plotted against car density for different number of lanes.}
+    \label{fundamental diagram}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.9]{Images/standard deviation.png}
+    \caption{Average flow rate plotted against car density for different number of lanes.}
+    \label{standard deviation}
 \end{figure}
 
 
+\section*{Discussion and analysis}
 \subsection*{Model discussion}
 
 In order to construct the above model several assumptions have been made. For example, the drivers have been assumed to be quite skilled
