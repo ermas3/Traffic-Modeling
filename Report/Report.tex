@@ -9,7 +9,7 @@
 \newgeometry{vmargin={25.4mm}, hmargin={27mm,27mm}}
 \setlength\parindent{0pt}   % Disable paragraph indent.
 
-\title{Simulation of multi-lane highway using cellular automata model}
+\title{Studying the flow rate on a multi-lane using a cellular automata model}
 \author{Erik Åsgrim}
 
 \begin{document}
@@ -17,10 +17,18 @@
 
 \section*{Introduction}
 \subsection*{Background}
-A multi-lane highway is going to be simulated using a cellular automata model, in order to study how the amount of lanes affects the flow rate for different car densities. We would also
-like to study the fluctuations of the flow rate, and investigate whether varying the amount of lanes can affect the fluctuations of the flow rate.
+When planning efficient traffic infrastructure achieving efficient and safe traffic flow is of course very important.
+A possible way of measuring how well traffic is flowing on a road is by studying the flow rate.
+The flow rate on a road is defined as the sum of the velocities of the cars on the road divided by the length of the road.
+In real life situations maximizing the flow rate could thus often be of interest. Another interesting metric to study is the fluctuations of the 
+flow rate. If the flow rate does not fluctuate much the traffic flow is behaving in a stable way which could imply easier
+driving conditions and a reduced risk of accidents.
+
+In this report we will investigate how the flow rate behavior depends on the amount of lanes on the road and the car density by simulating
+a highway using a cellular automata model.
+
 \subsection*{Model description}
-The model of the highway was implemented as a cellular automata on a road with some integer distance $L$ where each car on the road occupies $1$ length unit of the road. 
+The model of the highway was implemented as a cellular automata on a road of some integer distance $L$ where each car on the road occupies $1$ length unit of the road. 
 The road used periodic boundary conditions, meaning that the road does not have an end nor a beginning. The between the cars therefore also had to be calculated as periodic distances.
 In order to make the dynamics of the simulation more realistic all cars were given personal maximum velocity $v_{i,max}$. The value of $v_{i, max}$ for each car was randomly generated 
 as a rounded value taken from a Gaussian distribution around some mean value $\mu$, where $\mu$ would represent the speed limit on the road A Gaussian distribution of the values of $v_{i, max}$ thus
@@ -73,8 +81,9 @@ a bias towards changing to the right lane which solves the problem.
 
 \section*{Problem description}
 The purpose of this report is to simulate a multi-lane highway and compare how the flow rate is affected by varying the number
-of lanes. We would like to examine how the flow rate depends on the car density for different amount of lanes and investigate whether
-the fluctuations of the flow rate depends on the amount of lanes.
+of lanes at different car densities.
+To do a statistical analysis of the result we would also like to examine the standard error of the flow rate and investigate whether the 
+standard error of the flow rate varies depending on the car density and the number of lanes.
 
 \section*{Method}
 Initially the 
@@ -114,17 +123,45 @@ Initially the
     \label{fundamental diagram}
 \end{figure}
 
+\subsection*{Statistical accuracy}
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[scale=0.47]{Images/standard error 10 cars.png}
+        \captionof*{figure}{a) 10 cars}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[scale=0.47]{Images/standard error 20 cars.png}
+        \captionof*{figure}{b) 20 cars}
+    \end{minipage}
+    \centering
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[scale=0.47]{Images/standard error 30 cars.png}
+        \captionof*{figure}{c) 30 cars}
+    \end{minipage}%
+    \begin{minipage}{.5\textwidth}
+        \centering
+        \includegraphics[scale=0.47]{Images/standard error 40 cars.png}
+        \captionof*{figure}{d) 40 cars}
+    \end{minipage}
+    \caption{Standard error of average flowrate plotted against amount of simulations using different number of cars.}
+    \label{flowrate}
+\end{figure}
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.9]{Images/standard deviation.png}
-    \caption{Average flow rate plotted against car density for different number of lanes.}
-    \label{standard deviation}
+    \caption{Standard error of average flow rate plotted against car density for different number of lanes.}
+    \label{standard error}
 \end{figure}
 
 
 \section*{Discussion and analysis}
 \subsection*{Model discussion}
-
+% om det får plats, nämna omkörning på höger sida tillåtet??
 In order to construct the above model several assumptions have been made. For example, the drivers have been assumed to be quite skilled
 since a car will never perform a lane change if that means that a car behind will have to brake. In real life, this is of course true for some drivers 
 but certainly not all.
