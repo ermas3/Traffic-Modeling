@@ -516,71 +516,61 @@ INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 INPUT c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT ./Images/fundamental diagrams 1 lane.png
-INPUT ./Images/fundamental diagrams 1 lane.png
-INPUT Images/fundamental diagrams 1 lane.png
-INPUT ./Images/fundamental diagrams 1 lane.png
-INPUT ./Images/fundamental diagrams 1 lane.png
-INPUT ./Images/fundamental diagrams 2 lanes.png
-INPUT ./Images/fundamental diagrams 2 lanes.png
-INPUT Images/fundamental diagrams 2 lanes.png
-INPUT ./Images/fundamental diagrams 2 lanes.png
-INPUT ./Images/fundamental diagrams 2 lanes.png
-INPUT ./Images/fundamental diagrams 3 lanes.png
-INPUT ./Images/fundamental diagrams 3 lanes.png
-INPUT Images/fundamental diagrams 3 lanes.png
-INPUT ./Images/fundamental diagrams 3 lanes.png
-INPUT ./Images/fundamental diagrams 3 lanes.png
+INPUT ./Images/fundamental diagrams 1 lane 140.png
+INPUT ./Images/fundamental diagrams 1 lane 140.png
+INPUT Images/fundamental diagrams 1 lane 140.png
+INPUT ./Images/fundamental diagrams 1 lane 140.png
+INPUT ./Images/fundamental diagrams 1 lane 140.png
+INPUT ./Images/fundamental diagrams 2 lanes 140.png
+INPUT ./Images/fundamental diagrams 2 lanes 140.png
+INPUT Images/fundamental diagrams 2 lanes 140.png
+INPUT ./Images/fundamental diagrams 2 lanes 140.png
+INPUT ./Images/fundamental diagrams 2 lanes 140.png
+INPUT ./Images/fundamental diagrams 3 lanes 140.png
+INPUT ./Images/fundamental diagrams 3 lanes 140.png
+INPUT Images/fundamental diagrams 3 lanes 140.png
+INPUT ./Images/fundamental diagrams 3 lanes 140.png
+INPUT ./Images/fundamental diagrams 3 lanes 140.png
 INPUT ./Images/flowrate time 10 cars.png
 INPUT ./Images/flowrate time 10 cars.png
 INPUT Images/flowrate time 10 cars.png
 INPUT ./Images/flowrate time 10 cars.png
 INPUT ./Images/flowrate time 10 cars.png
-INPUT ./Images/flowrate time 20 cars.png
-INPUT ./Images/flowrate time 20 cars.png
-INPUT Images/flowrate time 20 cars.png
-INPUT ./Images/flowrate time 20 cars.png
-INPUT ./Images/flowrate time 20 cars.png
 INPUT ./Images/flowrate time 30 cars.png
 INPUT ./Images/flowrate time 30 cars.png
 INPUT Images/flowrate time 30 cars.png
 INPUT ./Images/flowrate time 30 cars.png
 INPUT ./Images/flowrate time 30 cars.png
-INPUT ./Images/flowrate time 40 cars.png
-INPUT ./Images/flowrate time 40 cars.png
-INPUT Images/flowrate time 40 cars.png
-INPUT ./Images/flowrate time 40 cars.png
-INPUT ./Images/flowrate time 40 cars.png
-INPUT ./Images/fundamental diagram.png
-INPUT ./Images/fundamental diagram.png
-INPUT Images/fundamental diagram.png
-INPUT ./Images/fundamental diagram.png
-INPUT ./Images/fundamental diagram.png
-INPUT ./Images/standard error 10 cars.png
-INPUT ./Images/standard error 10 cars.png
-INPUT Images/standard error 10 cars.png
-INPUT ./Images/standard error 10 cars.png
-INPUT ./Images/standard error 10 cars.png
-INPUT ./Images/standard error 20 cars.png
-INPUT ./Images/standard error 20 cars.png
-INPUT Images/standard error 20 cars.png
-INPUT ./Images/standard error 20 cars.png
-INPUT ./Images/standard error 20 cars.png
-INPUT ./Images/standard error 30 cars.png
-INPUT ./Images/standard error 30 cars.png
-INPUT Images/standard error 30 cars.png
-INPUT ./Images/standard error 30 cars.png
-INPUT ./Images/standard error 30 cars.png
-INPUT ./Images/standard error 40 cars.png
-INPUT ./Images/standard error 40 cars.png
-INPUT Images/standard error 40 cars.png
-INPUT ./Images/standard error 40 cars.png
-INPUT ./Images/standard error 40 cars.png
-INPUT ./Images/standard deviation.png
-INPUT ./Images/standard deviation.png
-INPUT Images/standard deviation.png
-INPUT ./Images/standard deviation.png
-INPUT ./Images/standard deviation.png
+INPUT ./Images/flowrate time 50 cars.png
+INPUT ./Images/flowrate time 50 cars.png
+INPUT Images/flowrate time 50 cars.png
+INPUT ./Images/flowrate time 50 cars.png
+INPUT ./Images/flowrate time 50 cars.png
+INPUT ./Images/fundamental diagram 120.png
+INPUT ./Images/fundamental diagram 120.png
+INPUT Images/fundamental diagram 120.png
+INPUT ./Images/fundamental diagram 120.png
+INPUT ./Images/fundamental diagram 120.png
+INPUT ./Images/standard error 10 cars 120.png
+INPUT ./Images/standard error 10 cars 120.png
+INPUT Images/standard error 10 cars 120.png
+INPUT ./Images/standard error 10 cars 120.png
+INPUT ./Images/standard error 10 cars 120.png
+INPUT ./Images/standard error 30 cars 120.png
+INPUT ./Images/standard error 30 cars 120.png
+INPUT Images/standard error 30 cars 120.png
+INPUT ./Images/standard error 30 cars 120.png
+INPUT ./Images/standard error 30 cars 120.png
+INPUT ./Images/standard error 50 cars 120.png
+INPUT ./Images/standard error 50 cars 120.png
+INPUT Images/standard error 50 cars 120.png
+INPUT ./Images/standard error 50 cars 120.png
+INPUT ./Images/standard error 50 cars 120.png
+INPUT ./Images/standard error 120.png
+INPUT ./Images/standard error 120.png
+INPUT Images/standard error 120.png
+INPUT ./Images/standard error 120.png
+INPUT ./Images/standard error 120.png
 INPUT Report.aux
 INPUT ./Report.out
 INPUT ./Report.out

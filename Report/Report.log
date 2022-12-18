@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.3)  16 DEC 2022 09:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.3)  18 DEC 2022 10:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -243,11 +243,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 File: l3backend-pdftex.def 2022-10-26 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count283
 \l__pdf_internal_box=\box53
-) (./Report.aux
-
-LaTeX Warning: Label `flowrate' multiply defined.
-
-)
+) (./Report.aux)
 \openout1 = `Report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -344,146 +340,128 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [1
 
 
-{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-<Images/fundamental diagrams 1 lane.png, id=31, 475.5366pt x 359.9046pt>
-File: Images/fundamental diagrams 1 lane.png Graphic file (type png)
-<use Images/fundamental diagrams 1 lane.png>
-Package pdftex.def Info: Images/fundamental diagrams 1 lane.png  used on input line 113.
+{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+<Images/fundamental diagrams 1 lane 140.png, id=40, 475.5366pt x 359.9046pt>
+File: Images/fundamental diagrams 1 lane 140.png Graphic file (type png)
+<use Images/fundamental diagrams 1 lane 140.png>
+Package pdftex.def Info: Images/fundamental diagrams 1 lane 140.png  used on input line 126.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 113--114
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 126--127
  [][] 
  []
 
-<Images/fundamental diagrams 2 lanes.png, id=33, 475.5366pt x 359.9046pt>
-File: Images/fundamental diagrams 2 lanes.png Graphic file (type png)
-<use Images/fundamental diagrams 2 lanes.png>
-Package pdftex.def Info: Images/fundamental diagrams 2 lanes.png  used on input line 118.
+<Images/fundamental diagrams 2 lanes 140.png, id=42, 475.5366pt x 359.9046pt>
+File: Images/fundamental diagrams 2 lanes 140.png Graphic file (type png)
+<use Images/fundamental diagrams 2 lanes 140.png>
+Package pdftex.def Info: Images/fundamental diagrams 2 lanes 140.png  used on input line 131.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 118--119
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 131--132
  [][] 
  []
 
-<Images/fundamental diagrams 3 lanes.png, id=34, 469.755pt x 354.123pt>
-File: Images/fundamental diagrams 3 lanes.png Graphic file (type png)
-<use Images/fundamental diagrams 3 lanes.png>
-Package pdftex.def Info: Images/fundamental diagrams 3 lanes.png  used on input line 124.
-(pdftex.def)             Requested size: 220.78488pt x 166.43782pt.
-[3]
-<Images/flowrate time 10 cars.png, id=44, 475.5366pt x 359.9046pt>
+<Images/fundamental diagrams 3 lanes 140.png, id=43, 475.5366pt x 359.9046pt>
+File: Images/fundamental diagrams 3 lanes 140.png Graphic file (type png)
+<use Images/fundamental diagrams 3 lanes 140.png>
+Package pdftex.def Info: Images/fundamental diagrams 3 lanes 140.png  used on input line 137.
+(pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
+
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 137--138
+ [][] 
+ []
+
+[4 <./Images/fundamental diagrams 1 lane 140.png> <./Images/fundamental diagrams 2 lanes 140.png> <./Images/fundamental diagrams 3 lanes 140.png>]
+<Images/flowrate time 10 cars.png, id=54, 475.5366pt x 359.9046pt>
 File: Images/flowrate time 10 cars.png Graphic file (type png)
 <use Images/flowrate time 10 cars.png>
-Package pdftex.def Info: Images/flowrate time 10 cars.png  used on input line 138.
+Package pdftex.def Info: Images/flowrate time 10 cars.png  used on input line 156.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 138--139
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 156--157
  [][] 
  []
 
-<Images/flowrate time 20 cars.png, id=45, 475.5366pt x 359.9046pt>
-File: Images/flowrate time 20 cars.png Graphic file (type png)
-<use Images/flowrate time 20 cars.png>
-Package pdftex.def Info: Images/flowrate time 20 cars.png  used on input line 143.
-(pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
-
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 143--144
- [][] 
- []
-
-<Images/flowrate time 30 cars.png, id=46, 475.5366pt x 359.9046pt>
+<Images/flowrate time 30 cars.png, id=55, 475.5366pt x 359.9046pt>
 File: Images/flowrate time 30 cars.png Graphic file (type png)
 <use Images/flowrate time 30 cars.png>
-Package pdftex.def Info: Images/flowrate time 30 cars.png  used on input line 149.
+Package pdftex.def Info: Images/flowrate time 30 cars.png  used on input line 161.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 149--150
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 161--162
  [][] 
  []
 
-<Images/flowrate time 40 cars.png, id=47, 475.5366pt x 359.9046pt>
-File: Images/flowrate time 40 cars.png Graphic file (type png)
-<use Images/flowrate time 40 cars.png>
-Package pdftex.def Info: Images/flowrate time 40 cars.png  used on input line 154.
+<Images/flowrate time 50 cars.png, id=56, 475.5366pt x 359.9046pt>
+File: Images/flowrate time 50 cars.png Graphic file (type png)
+<use Images/flowrate time 50 cars.png>
+Package pdftex.def Info: Images/flowrate time 50 cars.png  used on input line 167.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 154--155
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 167--168
  [][] 
  []
 
-[4 <./Images/fundamental diagrams 1 lane.png> <./Images/fundamental diagrams 2 lanes.png> <./Images/fundamental diagrams 3 lanes.png>]
-<Images/fundamental diagram.png, id=59, 469.0323pt x 354.123pt>
-File: Images/fundamental diagram.png Graphic file (type png)
-<use Images/fundamental diagram.png>
-Package pdftex.def Info: Images/fundamental diagram.png  used on input line 173.
-(pdftex.def)             Requested size: 422.12517pt x 318.70773pt.
- [5 <./Images/flowrate time 10 cars.png> <./Images/flowrate time 20 cars.png> <./Images/flowrate time 30 cars.png> <./Images/flowrate time 40 cars.png>]
-<Images/standard error 10 cars.png, id=69, 475.5366pt x 359.9046pt>
-File: Images/standard error 10 cars.png Graphic file (type png)
-<use Images/standard error 10 cars.png>
-Package pdftex.def Info: Images/standard error 10 cars.png  used on input line 195.
+[5 <./Images/flowrate time 10 cars.png> <./Images/flowrate time 30 cars.png> <./Images/flowrate time 50 cars.png>]
+<Images/fundamental diagram 120.png, id=66, 469.755pt x 354.123pt>
+File: Images/fundamental diagram 120.png Graphic file (type png)
+<use Images/fundamental diagram 120.png>
+Package pdftex.def Info: Images/fundamental diagram 120.png  used on input line 191.
+(pdftex.def)             Requested size: 422.7756pt x 318.70773pt.
+ [6 <./Images/fundamental diagram 120.png>]
+<Images/standard error 10 cars 120.png, id=74, 475.5366pt x 359.9046pt>
+File: Images/standard error 10 cars 120.png Graphic file (type png)
+<use Images/standard error 10 cars 120.png>
+Package pdftex.def Info: Images/standard error 10 cars 120.png  used on input line 213.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 195--196
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 213--214
  [][] 
  []
 
-<Images/standard error 20 cars.png, id=70, 475.5366pt x 359.9046pt>
-File: Images/standard error 20 cars.png Graphic file (type png)
-<use Images/standard error 20 cars.png>
-Package pdftex.def Info: Images/standard error 20 cars.png  used on input line 200.
+<Images/standard error 30 cars 120.png, id=75, 475.5366pt x 359.9046pt>
+File: Images/standard error 30 cars 120.png Graphic file (type png)
+<use Images/standard error 30 cars 120.png>
+Package pdftex.def Info: Images/standard error 30 cars 120.png  used on input line 218.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 200--201
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 218--219
  [][] 
  []
 
-<Images/standard error 30 cars.png, id=71, 475.5366pt x 359.9046pt>
-File: Images/standard error 30 cars.png Graphic file (type png)
-<use Images/standard error 30 cars.png>
-Package pdftex.def Info: Images/standard error 30 cars.png  used on input line 206.
+<Images/standard error 50 cars 120.png, id=76, 475.5366pt x 359.9046pt>
+File: Images/standard error 50 cars 120.png Graphic file (type png)
+<use Images/standard error 50 cars 120.png>
+Package pdftex.def Info: Images/standard error 50 cars 120.png  used on input line 224.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 206--207
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 224--225
  [][] 
  []
 
-<Images/standard error 40 cars.png, id=72, 475.5366pt x 359.9046pt>
-File: Images/standard error 40 cars.png Graphic file (type png)
-<use Images/standard error 40 cars.png>
-Package pdftex.def Info: Images/standard error 40 cars.png  used on input line 211.
-(pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
-
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 211--212
- [][] 
- []
-
-[6 <./Images/fundamental diagram.png>]
-<Images/standard deviation.png, id=80, 469.0323pt x 354.123pt>
-File: Images/standard deviation.png Graphic file (type png)
-<use Images/standard deviation.png>
-Package pdftex.def Info: Images/standard deviation.png  used on input line 231.
-(pdftex.def)             Requested size: 422.12517pt x 318.70773pt.
- [7 <./Images/standard error 10 cars.png> <./Images/standard error 20 cars.png> <./Images/standard error 30 cars.png> <./Images/standard error 40 cars.png>] [8 <./Images/standard deviation.png>] [9] (./Report.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
+[7 <./Images/standard error 10 cars 120.png> <./Images/standard error 30 cars 120.png> <./Images/standard error 50 cars 120.png>]
+<Images/standard error 120.png, id=86, 469.755pt x 354.123pt>
+File: Images/standard error 120.png Graphic file (type png)
+<use Images/standard error 120.png>
+Package pdftex.def Info: Images/standard error 120.png  used on input line 249.
+(pdftex.def)             Requested size: 422.7756pt x 318.70773pt.
+ [8 <./Images/standard error 120.png>] [9] (./Report.aux)
 Package rerunfilecheck Info: File `Report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 10254 strings out of 474968
- 169196 string characters out of 5780081
- 519995 words of memory out of 5000000
- 31614 multiletter control sequences out of 15000+600000
+ 10241 strings out of 474968
+ 168906 string characters out of 5780081
+ 520065 words of memory out of 5000000
+ 31603 multiletter control sequences out of 15000+600000
  474764 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,10n,79p,356b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Report.pdf (9 pages, 696254 bytes).
+Output written on Report.pdf (9 pages, 610238 bytes).
 PDF statistics:
- 148 PDF objects out of 1000 (max. 8388607)
+ 144 PDF objects out of 1000 (max. 8388607)
  96 compressed objects within 1 object stream
  39 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

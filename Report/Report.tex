@@ -87,49 +87,67 @@ standard error of the flow rate varies depending on the car density and the numb
 
 \section*{Method}
 \subsection*{Setting the system size}
-Initially we must choose a system size to run the simulations on. The system size must be chosen so that finite size effects are negligble.
-The values of $v_{i,max}$ are sampled from a Gaussian distribution with mean $\mu = 10$ and standard deviation $\sigma = 1$. The braking probability
-is set to $p=0.2$. These simulation parameters will remain unchanged during all following simulations. Fundamental diagrams are generated
-by increasing the number of cars $n_{cars}$ so that the car density, defined as the number of cars divided by the road length, varies between 0 and 1.
-The flow rate is calculated as an average over 100 time steps after the system appears to have equilibrated.
-This is done using the different values of the road length $L=20, 40, 60, 80, 100$. Seperate fundamental diagrams are generated using 1, 2 and 3 lanes.
-The road length $L$ for the following simulations is finally set to a value where the fundamental diagrams appear to have become independant of the system size.
+Initially we must choose a system size to run the simulations on where finite size effects can be considered negligble. This is done plotting fundamental
+diagrams of the system while iteratively increasing the road length $L$. When generating the fundamental diagrams the car density is increased by increasing the number
+of cars and keeping the road length $L$ constant. This is done separately using 1, 2 and 3 lanes, while keeping remaining system
+parameters constant. At a certain road length $L$ the fundamental diagrams will not change as the road length
+continues to increase, meaning that the system behavior has become independant of its size. When a road length $L$ is found such that the fundamental diagrams
+do not continue to change as $L$ increases the road length will be set to thath value for the following simulations.
 
 \subsection*{Flowrate}
-To get an better understanding of the flow rate behavior and the time necessary to reach equilibrium, the flow rate is plotted against time using various different 
-car densities and the road length $L$ found in the previous section. Fundamental diagrams are also generated for using 1, 2 and 3 lanes.
+To get an understanding of the flow rate behavior and the time necessary to reach equilibrium, the flow rate is plotted against time using a few different 
+car densities and the road length $L$ found in the previous section. Fundamental diagrams are also generated for using 1, 2 and 3 lanes. Just like previously,
+the road length $L$ is always kepts constant while generating the fundamental diagrams and only the number of cars is increased.
 
 \subsection*{Statistical analysis}
-In order to examine the statistical accuracy of the results we will study the standard error. 
+In order to examine the statistical accuracy of the results we will study the standard error of the average flow rate after running the simulation multiple times. 
+The average flow rate is calculated as an average over 100 time steps after the system has reached an equilibrium. Initially, we will examine how the standard error
+depends on the number of simulation using a few different car densities. To get a better understanding of behavior of the standard error the standard error will be calculated
+at many differernt car densities to get a diagram of how the standard error depends on the car density. This is all done using 1, 2 and 3 lanes separately.
 
 
 
 \section*{Results and analysis}
 \subsection*{Setting the system size}
+%Köra 10 gånger för att minska brus
+The values of $v_{i,max}$ were sampled from a Gaussian distribution with mean $\mu = 10$ and standard deviation $\sigma = 1$. The braking probability
+was set to $p=0.2$. Note that these simulation parameters remained unchanged during all following simulations. Fundamental diagrams were generated
+by increasing the number of cars $n_{cars}$ so that the car density varied between 0 and 1. 
+The simulation was run for 200 time steps and the flow rate was calculated as an average over the last 100 time steps.
+This was done using the different values of the road length $L=20, 40, 60, 80, 100, 120, 140$. In order to reduce random noise in the fundamental diagrams
+10 fundamental diagrams were generated for each value of $L$ and a final fundamental diagram was calculated as an average over these 10 fundamental diagrams.
+This procedure was done separately using 1, 2 and 3 lanes.
+The results can be seen below in figure \ref*{finite size effects}.
+
 \begin{figure}[H]
     \centering
     \begin{minipage}{.5\textwidth}
         \centering
-        \includegraphics[scale=0.47]{Images/fundamental diagrams 1 lane.png}
+        \includegraphics[scale=0.47]{Images/fundamental diagrams 1 lane 140.png}
         \captionof*{figure}{a) 1 lane}
     \end{minipage}%
     \begin{minipage}{.5\textwidth}
         \centering
-        \includegraphics[scale=0.47]{Images/fundamental diagrams 2 lanes.png}
+        \includegraphics[scale=0.47]{Images/fundamental diagrams 2 lanes 140.png}
         \captionof*{figure}{b) 2 lanes}
     \end{minipage}
     \centering
     \begin{minipage}{.5\textwidth}
         \centering
-        \includegraphics[scale=0.47]{Images/fundamental diagrams 3 lanes.png}
+        \includegraphics[scale=0.47]{Images/fundamental diagrams 3 lanes 140.png}
         \captionof*{figure}{c) 3 lanes}
     \end{minipage}%
     \caption{Fundamental diagrams using different road lenghts $L$ using 1, 2 and 3 lanes.}
-    \label{flowrate}
+    \label{finite size effects}
 \end{figure}
 
-\subsection*{Flowrate}
-We plot the flowrate over time while using road length $L=100$, and setting the number of cars to $n_cars=10, 20, 30, 40$. This is done using 1, 2 and 3 lanes.
+In figure \ref*{finite size effects} we observe that the largest changes in the fundamental diagrams when increasing $L$ occur around the
+peak of the fundamental diagrams when the average flow rate is maximal. In figure \ref*{finite size effects} a) when using only 1 lane it appears
+as if the system becomes independant of it size already at approximately $L=60$. When using 2 and 3 lanes in figure \ref*{finite size effects} b) and c) a
+larger value of $L$ appears to be necessary in order to 
+
+\subsection*{Flow rate}
+We plot the flowrate over time while using road length $L=120$, and setting the number of cars to $n_{cars}=10, 30, 50, 70$. This is done using 1, 2 and 3 lanes.
 The resulting plots of the flowrate against time can be seen below in figure \ref*{flowrate}
 \begin{figure}[H]
     \centering
@@ -140,20 +158,20 @@ The resulting plots of the flowrate against time can be seen below in figure \re
     \end{minipage}%
     \begin{minipage}{.5\textwidth}
         \centering
-        \includegraphics[scale=0.47]{Images/flowrate time 20 cars.png}
-        \captionof*{figure}{b) 20 cars}
+        \includegraphics[scale=0.47]{Images/flowrate time 30 cars.png}
+        \captionof*{figure}{b) 30 cars}
     \end{minipage}
     \centering
     \begin{minipage}{.5\textwidth}
         \centering
-        \includegraphics[scale=0.47]{Images/flowrate time 30 cars.png}
-        \captionof*{figure}{c) 30 cars}
+        \includegraphics[scale=0.47]{Images/flowrate time 50 cars.png}
+        \captionof*{figure}{c) 50 cars}
     \end{minipage}%
-    \begin{minipage}{.5\textwidth}
-        \centering
-        \includegraphics[scale=0.47]{Images/flowrate time 40 cars.png}
-        \captionof*{figure}{d) 40 cars}
-    \end{minipage}
+    %\begin{minipage}{.5\textwidth}
+    %    \centering
+    %    \includegraphics[scale=0.47]{Images/flowrate time 70 cars.png}
+    %    \captionof*{figure}{d) 70 cars}
+    %\end{minipage}
     \caption{Flowrate plotted against time using different number of cars.}
     \label{flowrate}
 \end{figure}
@@ -170,7 +188,7 @@ increased in order to increase the car density between 0 and 1. The results are 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{Images/fundamental diagram.png}
+    \includegraphics[scale=0.9]{Images/fundamental diagram 120.png}
     \caption{Average flow rate plotted against car density for different number of lanes.}
     \label{fundamental diagram}
 \end{figure}
@@ -192,25 +210,25 @@ standard error of the flow rate plotted against the number of simulations run ar
     \centering
     \begin{minipage}{.5\textwidth}
         \centering
-        \includegraphics[scale=0.47]{Images/standard error 10 cars.png}
+        \includegraphics[scale=0.47]{Images/standard error 10 cars 120.png}
         \captionof*{figure}{a) 10 cars}
     \end{minipage}%
     \begin{minipage}{.5\textwidth}
         \centering
-        \includegraphics[scale=0.47]{Images/standard error 20 cars.png}
-        \captionof*{figure}{b) 20 cars}
+        \includegraphics[scale=0.47]{Images/standard error 30 cars 120.png}
+        \captionof*{figure}{b) 30 cars}
     \end{minipage}
     \centering
     \begin{minipage}{.5\textwidth}
         \centering
-        \includegraphics[scale=0.47]{Images/standard error 30 cars.png}
-        \captionof*{figure}{c) 30 cars}
+        \includegraphics[scale=0.47]{Images/standard error 50 cars 120.png}
+        \captionof*{figure}{c) 50 cars}
     \end{minipage}%
-    \begin{minipage}{.5\textwidth}
-        \centering
-        \includegraphics[scale=0.47]{Images/standard error 40 cars.png}
-        \captionof*{figure}{d) 40 cars}
-    \end{minipage}
+    %\begin{minipage}{.5\textwidth}
+    %    \centering
+    %    \includegraphics[scale=0.47]{Images/standard error 70 cars 120.png}
+    %    \captionof*{figure}{d) 70 cars}
+    %\end{minipage}
     \caption{Standard error of average flowrate plotted against amount of simulations using different number of cars.}
     \label{standard error 1}
 \end{figure}
@@ -228,7 +246,7 @@ This is done using 1, 2 and 3 lanes. The results can be seen below in figure \re
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.9]{Images/standard deviation.png}
+    \includegraphics[scale=0.9]{Images/standard error 120.png}
     \caption{Standard error of average flow rate plotted against car density for different number of lanes.}
     \label{standard error}
 \end{figure}
