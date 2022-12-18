@@ -17,7 +17,7 @@
 
 \section*{Introduction}
 \subsection*{Background}
-When planning efficient traffic infrastructure achieving efficient and safe traffic flow is of course very important.
+When planning traffic infrastructure achieving efficient and safe traffic flow is highly important.
 A possible way of measuring how well traffic is flowing on a road is by studying the flow rate.
 The flow rate on a road is defined as the sum of the velocities of the cars on the road divided by the length of the road.
 In real life situations maximizing the flow rate could thus often be of interest. Another interesting metric to study is the fluctuations of the 
@@ -28,17 +28,18 @@ In this report we will investigate how the flow rate behavior depends on the amo
 a highway using a cellular automata model.
 
 \subsection*{Model description}
-The model of the highway was implemented as a cellular automata on a road of some integer distance $L$ where each car on the road occupies $1$ length unit of the road. 
-The road used periodic boundary conditions, meaning that the road does not have an end nor a beginning. The between the cars therefore also had to be calculated as periodic distances.
-In order to make the dynamics of the simulation more realistic all cars were given personal maximum velocity $v_{i,max}$. The value of $v_{i, max}$ for each car was randomly generated 
-as a rounded value taken from a Gaussian distribution around some mean value $\mu$, where $\mu$ would represent the speed limit on the road A Gaussian distribution of the values of $v_{i, max}$ thus
-seems logical since in real life most cars drive at approximately the speed limit even though a few cars drive much faster or slower.
+The model of the highway was implemented as a cellular automata. The road was given some integer distance $L$ where each car on the road occupied $1$ length unit of the road. 
+Periodic boundary conditions were used, meaning that the road did not have an end nor a beginning. The distance between the cars therefore also had to be calculated as periodic distances.
+In order to make the dynamics of the simulation more realistic all cars were given personal maximum velocities $v_{i,max}$. The values of $v_{i, max}$ were randomly generated 
+from a Gaussian distribution around some mean value $\mu$ and standard deviation $\sigma$, and then rounded to the nearest integer.
+%where $\mu$ would represent the speed limit on the road. A Gaussian distribution of the values of $v_{i, max}$ thus
+%seems logical since in real life most cars drive at approximately the speed limit even though a few cars drive much faster or slower.
 
 The rules for the cellular automata were performed in two different parts at each time step.
-First, rules determining what lane changes are going to be performed are implemented. This was done by first calculating desired lane change of each car and then
+First, rules determining what lane changes are going to be performed are implemented. This was done by first calculating the desired lane change of each car and then
 performing the desired lane change only if the lane change can be performed safely.
 Secondly, rules determining how the various cars are going to change their velocity are implemented.
-Each rule was implemented simultaneously on each car before moving on to the next rule. This means that the ordering of the rules is very important, as latter rules can 'overrule' previous decisions.
+Each rule was implemented simultaneously on each car before moving on to the next rule. This means that the ordering of the rules is very important, as latter rules can overrule previous decisions.
 In order to make the rules more compact we also introduce the following notation
 
 \begin{itemize}
@@ -73,8 +74,8 @@ Using the above notation the rules of the cellular automata were implemented as 
 \end{enumerate}
 
 % Om det får plats, förklara logiken mer ingående av varje regel.
-Most rules above are quite logical and result in a behavior of the cars that appears natural. Rule (3) might however need some
-clarification. Without rule (3) mostly the left lane becomes occupied for higher car densities. In order to solve this rule (3) creates
+The rules above result in a behavior of the cars that appears natural. Rule (3) might however need some
+clarification. Without rule (3) mostly the left lane becomes occupied for higher car densities. In order to solve this, rule (3) creates
 a bias towards changing to the right lane which solves the problem. An example of a lane changing scenario from left to right is seen in figure
 \ref*{left to right}. An example of a lane changing scenario from right to left is seen in figure ... %TODO .
 
@@ -121,8 +122,10 @@ at many differernt car densities to get a diagram of how the standard error depe
 \subsection*{Setting the system size}
 %Köra 10 gånger för att minska brus
 The values of $v_{i,max}$ were sampled from a Gaussian distribution with mean $\mu = 10$ and standard deviation $\sigma = 1$. The braking probability
-was set to $p=0.2$. Note that these simulation parameters remained unchanged during all following simulations. Fundamental diagrams were generated
-by increasing the number of cars $n_{cars}$ so that the car density varied between 0 and 1. 
+was set to $p=0.2$. Note that these simulation parameters remained unchanged during all following simulations. The cars were initally placed one unit length ahead 
+of each other in one lane... % TODO BESKRIV INITIAL CONDITIONS FÄRDIGT.
+
+Fundamental diagrams were generated by increasing the number of cars $n_{cars}$ so that the car density varied between 0 and 1. 
 The simulation was run for 200 time steps and the flow rate was calculated as an average over the last 100 time steps.
 This was done using the different values of the road length $L=20, 40, 60, 80, 100, 120, 140$. In order to reduce random noise in the fundamental diagrams
 10 fundamental diagrams were generated for each value of $L$ and a final fundamental diagram was calculated as an average over these 10 fundamental diagrams.
@@ -278,6 +281,7 @@ in the discussion.
 \subsection*{Results discussion}
 
 \subsection*{Model discussion}
+% gaussian distribution of velocities?
 In order to construct the above model several assumptions have been made. For example, the drivers have been assumed to be quite skilled
 since a car will never perform a lane change if that means that a car behind will have to brake. In real life, this is of course true for some drivers 
 but certainly not all.
