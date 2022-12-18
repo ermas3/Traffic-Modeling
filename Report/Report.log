@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.3)  18 DEC 2022 17:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.3)  18 DEC 2022 18:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -350,30 +350,30 @@ Package pdftex.def Info: Images/Bilbild.jpg  used on input line 84.
 <Images/fundamental diagrams 1 lane 140.png, id=42, 475.5366pt x 359.9046pt>
 File: Images/fundamental diagrams 1 lane 140.png Graphic file (type png)
 <use Images/fundamental diagrams 1 lane 140.png>
-Package pdftex.def Info: Images/fundamental diagrams 1 lane 140.png  used on input line 139.
+Package pdftex.def Info: Images/fundamental diagrams 1 lane 140.png  used on input line 138.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 139--140
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 138--139
  [][] 
  []
 
 <Images/fundamental diagrams 2 lanes 140.png, id=44, 475.5366pt x 359.9046pt>
 File: Images/fundamental diagrams 2 lanes 140.png Graphic file (type png)
 <use Images/fundamental diagrams 2 lanes 140.png>
-Package pdftex.def Info: Images/fundamental diagrams 2 lanes 140.png  used on input line 144.
+Package pdftex.def Info: Images/fundamental diagrams 2 lanes 140.png  used on input line 143.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 144--145
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 143--144
  [][] 
  []
 
 <Images/fundamental diagrams 3 lanes 140.png, id=45, 475.5366pt x 359.9046pt>
 File: Images/fundamental diagrams 3 lanes 140.png Graphic file (type png)
 <use Images/fundamental diagrams 3 lanes 140.png>
-Package pdftex.def Info: Images/fundamental diagrams 3 lanes 140.png  used on input line 150.
+Package pdftex.def Info: Images/fundamental diagrams 3 lanes 140.png  used on input line 149.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 150--151
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 149--150
  [][] 
  []
 
@@ -381,30 +381,30 @@ Overfull \hbox (1.57072pt too wide) in paragraph at lines 150--151
 <Images/flowrate time 10 cars.png, id=53, 475.5366pt x 359.9046pt>
 File: Images/flowrate time 10 cars.png Graphic file (type png)
 <use Images/flowrate time 10 cars.png>
-Package pdftex.def Info: Images/flowrate time 10 cars.png  used on input line 173.
+Package pdftex.def Info: Images/flowrate time 10 cars.png  used on input line 172.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 173--174
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 172--173
  [][] 
  []
 
 <Images/flowrate time 30 cars.png, id=54, 475.5366pt x 359.9046pt>
 File: Images/flowrate time 30 cars.png Graphic file (type png)
 <use Images/flowrate time 30 cars.png>
-Package pdftex.def Info: Images/flowrate time 30 cars.png  used on input line 178.
+Package pdftex.def Info: Images/flowrate time 30 cars.png  used on input line 177.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 178--179
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 177--178
  [][] 
  []
 
 <Images/flowrate time 50 cars.png, id=55, 475.5366pt x 359.9046pt>
 File: Images/flowrate time 50 cars.png Graphic file (type png)
 <use Images/flowrate time 50 cars.png>
-Package pdftex.def Info: Images/flowrate time 50 cars.png  used on input line 184.
+Package pdftex.def Info: Images/flowrate time 50 cars.png  used on input line 183.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 184--185
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 183--184
  [][] 
  []
 
@@ -412,36 +412,36 @@ Overfull \hbox (1.57072pt too wide) in paragraph at lines 184--185
 <Images/fundamental diagram 120.png, id=65, 469.755pt x 354.123pt>
 File: Images/fundamental diagram 120.png Graphic file (type png)
 <use Images/fundamental diagram 120.png>
-Package pdftex.def Info: Images/fundamental diagram 120.png  used on input line 208.
+Package pdftex.def Info: Images/fundamental diagram 120.png  used on input line 207.
 (pdftex.def)             Requested size: 422.7756pt x 318.70773pt.
  [6 <./Images/flowrate time 10 cars.png> <./Images/flowrate time 30 cars.png> <./Images/flowrate time 50 cars.png>]
 <Images/standard error 10 cars 120.png, id=74, 475.5366pt x 359.9046pt>
 File: Images/standard error 10 cars 120.png Graphic file (type png)
 <use Images/standard error 10 cars 120.png>
-Package pdftex.def Info: Images/standard error 10 cars 120.png  used on input line 230.
+Package pdftex.def Info: Images/standard error 10 cars 120.png  used on input line 229.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 230--231
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 229--230
  [][] 
  []
 
 <Images/standard error 30 cars 120.png, id=75, 475.5366pt x 359.9046pt>
 File: Images/standard error 30 cars 120.png Graphic file (type png)
 <use Images/standard error 30 cars 120.png>
-Package pdftex.def Info: Images/standard error 30 cars 120.png  used on input line 235.
+Package pdftex.def Info: Images/standard error 30 cars 120.png  used on input line 234.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 235--236
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 234--235
  [][] 
  []
 
 <Images/standard error 50 cars 120.png, id=76, 475.5366pt x 359.9046pt>
 File: Images/standard error 50 cars 120.png Graphic file (type png)
 <use Images/standard error 50 cars 120.png>
-Package pdftex.def Info: Images/standard error 50 cars 120.png  used on input line 241.
+Package pdftex.def Info: Images/standard error 50 cars 120.png  used on input line 240.
 (pdftex.def)             Requested size: 223.50223pt x 169.15518pt.
 
-Overfull \hbox (1.57072pt too wide) in paragraph at lines 241--242
+Overfull \hbox (1.57072pt too wide) in paragraph at lines 240--241
  [][] 
  []
 
@@ -449,7 +449,7 @@ Overfull \hbox (1.57072pt too wide) in paragraph at lines 241--242
 <Images/standard error 120.png, id=85, 469.755pt x 354.123pt>
 File: Images/standard error 120.png Graphic file (type png)
 <use Images/standard error 120.png>
-Package pdftex.def Info: Images/standard error 120.png  used on input line 266.
+Package pdftex.def Info: Images/standard error 120.png  used on input line 265.
 (pdftex.def)             Requested size: 422.7756pt x 318.70773pt.
  [8 <./Images/standard error 10 cars 120.png> <./Images/standard error 30 cars 120.png> <./Images/standard error 50 cars 120.png>] [9 <./Images/standard error 120.png>] [10] (./Report.aux)
 Package rerunfilecheck Info: File `Report.out' has not changed.
@@ -464,7 +464,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  72i,10n,79p,460b,491s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on Report.pdf (10 pages, 655108 bytes).
+Output written on Report.pdf (10 pages, 655765 bytes).
 PDF statistics:
  156 PDF objects out of 1000 (max. 8388607)
  103 compressed objects within 2 object streams
