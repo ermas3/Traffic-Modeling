@@ -75,7 +75,17 @@ Using the above notation the rules of the cellular automata were implemented as 
 % Om det får plats, förklara logiken mer ingående av varje regel.
 Most rules above are quite logical and result in a behavior of the cars that appears natural. Rule (3) might however need some
 clarification. Without rule (3) mostly the left lane becomes occupied for higher car densities. In order to solve this rule (3) creates
-a bias towards changing to the right lane which solves the problem.
+a bias towards changing to the right lane which solves the problem. An example of a lane changing scenario from left to right is seen in figure
+\ref*{left to right}. An example of a lane changing scenario from right to left is seen in figure ... %TODO .
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Images/Bilbild.jpg}
+    \caption{Example of distance caluclations for the i:th car marked in red. The car has a desired
+    lane change to the left since $v_i < v_{i, max}$ and $d_{forward_left}>d_{forward}$. The desired lane change
+    is allowed since $d_{back} > v_{back}$.}
+    \label{left to right}
+\end{figure}
 
 % diskutera hur diskretiseringen av rum och tid kan påverka!!
 
@@ -143,8 +153,12 @@ The results can be seen below in figure \ref*{finite size effects}.
 
 In figure \ref*{finite size effects} we observe that the largest changes in the fundamental diagrams when increasing $L$ occur around the
 peak of the fundamental diagrams when the average flow rate is maximal. In figure \ref*{finite size effects} a) when using only 1 lane it appears
-as if the system becomes independant of it size already at approximately $L=60$. When using 2 and 3 lanes in figure \ref*{finite size effects} b) and c) a
-larger value of $L$ appears to be necessary in order to 
+as if the system becomes independant of its size at approximately $L=60$, as we can no longer see a change in the fundamental diagrams when increasing
+$L$ beyond thi value. When increasing the number of lanes a larger value of $L$ appears to be necessary to make the system independant of its size. 
+In figure \ref*{finite size effects} a) it appears as if $L=100$ before the fundamental diagram stops changing when using 2 lanes. When increasing the number
+of lanes to 3 it appears as if $L=120$ is necessary before the fundamental diagrams stop changing, as can be seen in figure \ref*{finite size effects} c).
+We thus conclude that a road length $L=120$ appears to be necessary in order to mitigate finite size effect, and therefore $L=120$ will be used
+in following simulations.
 
 \subsection*{Flow rate}
 We plot the flowrate over time while using road length $L=120$, and setting the number of cars to $n_{cars}=10, 30, 50, 70$. This is done using 1, 2 and 3 lanes.
