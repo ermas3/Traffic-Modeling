@@ -516,11 +516,31 @@ INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 INPUT c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
-INPUT ./Images/Bilbild.jpg
-INPUT ./Images/Bilbild.jpg
-INPUT Images/Bilbild.jpg
-INPUT ./Images/Bilbild.jpg
-INPUT ./Images/Bilbild.jpg
+INPUT ./Images/left turn.png
+INPUT ./Images/left turn.png
+INPUT Images/left turn.png
+INPUT ./Images/left turn.png
+INPUT ./Images/left turn.png
+INPUT ./Images/right turn.png
+INPUT ./Images/right turn.png
+INPUT Images/right turn.png
+INPUT ./Images/right turn.png
+INPUT ./Images/right turn.png
+INPUT ./Images/ic 1 lane.png
+INPUT ./Images/ic 1 lane.png
+INPUT Images/ic 1 lane.png
+INPUT ./Images/ic 1 lane.png
+INPUT ./Images/ic 1 lane.png
+INPUT ./Images/ic 2 lanes.png
+INPUT ./Images/ic 2 lanes.png
+INPUT Images/ic 2 lanes.png
+INPUT ./Images/ic 2 lanes.png
+INPUT ./Images/ic 2 lanes.png
+INPUT ./Images/ic 3 lanes.png
+INPUT ./Images/ic 3 lanes.png
+INPUT Images/ic 3 lanes.png
+INPUT ./Images/ic 3 lanes.png
+INPUT ./Images/ic 3 lanes.png
 INPUT ./Images/fundamental diagrams 1 lane 140.png
 INPUT ./Images/fundamental diagrams 1 lane 140.png
 INPUT Images/fundamental diagrams 1 lane 140.png
