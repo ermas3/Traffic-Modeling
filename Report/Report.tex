@@ -316,9 +316,11 @@ value is vary similar to the car densities for which the standard error reaches 
 \subsection*{Results discussion}
 According to the results seen in figure \ref*{fundamental diagram} and figure \ref*{standard error} the car density for which the flow rate reaches its maximum value appears
 to be the same as the car density for which the flow rate standard error reach their maximum value. In the model it thus appears to be impossible to maximize the flow rate while still
-achieving a low standard error. Comparing to reality the results appear quite resonable.
-
-In order to determine if these results actually hold in real life trafic flow real life data would have to be analyzed and compared to the model results. The results however give us as 
+achieving a low standard error. These results appear quite resonable since when the flowrate is maximal it is logical that the system would be more sensitive
+to small perturbations since there is a lot of activity on the road. If the model is correct, there would thus be a clear tradeoff between having a high flow rate and
+low fluctuations of the flow rate when planning road infrastructure. One would have to be especially careful when increasing the number of lanes as we could see in figure
+\ref*{standard error} that increasing the number of lanes generally appeared to increase the fluctuations of the flowrate.
+In order to determine if these results actually hold in real life trafic flow real life traffic data would have to be analyzed and compared to the model results. The results however give us as 
 idea that 
 
 \subsection*{Model discussion}
@@ -337,7 +339,11 @@ that a car might detect itself as the car in front. The car would then calculate
 This is, of course, highly unrealistic and something we must be aware of when using the period boundary conditions.
 
 \subsection*{Summarizing conclusions}
-The results 
-
+The simulation results indicate that increasing the number of lanes give no effect on flow rate for low car densities. For high car densities increasing the number of lanes
+appears to increase the flowrate by a constant amount for each additional lane.
+Additionally, the results indicate that there is a strong correlation between flow rate and the fluctuations of the flow rate. According to the simulation results increasing the flow rate
+inevitably increases the fluctuations of the flow rate, resulting in a tradeoff between high flow rate and low fluctuations of the flow rate.
+In order to determine wether this correlation between the flow rate and the fluctuations of the flow rate appears in real life traffic, the model would have to be compared
+to real life traffic data.
 
 \end{document}

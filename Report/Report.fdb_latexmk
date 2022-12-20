@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1671459640 "c:/Users/Erik/Desktop/Traffic Modeling/Traffic-Modeling/Report/Report.tex" "Report.pdf" "Report" 1671459644 0
+["pdflatex"] 1671544694 "c:/Users/Erik/Desktop/Traffic Modeling/Traffic-Modeling/Report/Report.tex" "Report.pdf" "Report" 1671544697 0
   "Images/flowrate time 10 cars.png" 1671264443 67322 1db022b6c1691efdd6a0232d6200288a ""
   "Images/flowrate time 30 cars.png" 1671264533 64676 4b2ebf29d2ef1b4e97b313636f580842 ""
   "Images/flowrate time 50 cars.png" 1671264553 69404 7ddd730954c7eeabf7d4cc7df17a1348 ""
@@ -16,10 +16,10 @@
   "Images/standard error 120.png" 1671276613 52792 2e0e5456fee8214f3b1c11fb566993a4 ""
   "Images/standard error 30 cars 120.png" 1671265079 56028 b45e0faed5af46a7fd89b74a02a2a656 ""
   "Images/standard error 50 cars 120.png" 1671265232 57013 c720df58b3ad5efc5096775f62d25dc8 ""
-  "Report.aux" 1671459643 4070 6f5f736149ae49652c6bdbbe9dfbf909 "pdflatex"
-  "Report.out" 1671459642 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "Report.tex" 1671459638 22845 f442e085ac7c0728ca3b986c16d89561 ""
-  "c:/Users/Erik/Desktop/Traffic Modeling/Traffic-Modeling/Report/Report.tex" 1671459638 22845 f442e085ac7c0728ca3b986c16d89561 ""
+  "Report.aux" 1671544697 4070 6f5f736149ae49652c6bdbbe9dfbf909 "pdflatex"
+  "Report.out" 1671544695 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "Report.tex" 1671544692 24156 7dd6fb13e0f3857c3ff5ee954c536d0f ""
+  "c:/Users/Erik/Desktop/Traffic Modeling/Traffic-Modeling/Report/Report.tex" 1671544692 24156 7dd6fb13e0f3857c3ff5ee954c536d0f ""
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1670080917 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1670082676 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1670081916 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
