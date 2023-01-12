@@ -20,8 +20,8 @@
 When planning traffic infrastructure achieving efficient and safe traffic flow is highly important.
 A possible way of measuring how well traffic is flowing on a road is by studying the flow rate.
 The flow rate is defined as the sum of the velocities of the cars on the road divided by the length of the road.
-In real life situations maximizing the flow rate could thus often be of interest. Another interesting metric to study are the fluctuations of the 
-flow rate. Low fluctuations in the flow rate could indicate that the traffic flow is behaving in a stable and predictable way, 
+In real life situations maximizing the flow rate could thus often be of interest. Another interesting metric to study is the fluctuation of the 
+flow rate. Low fluctuations of the flow rate could indicate that the traffic flow is behaving in a stable and predictable way, 
 which could imply easier driving conditions and a reduced risk of accidents.
 
 In this report we will investigate how the flow rate behavior depends on the amount of lanes and the car density by simulating
@@ -36,20 +36,20 @@ from a Gaussian distribution with some mean value $\mu$ and standard deviation $
 %seems logical since in real life most cars drive at approximately the speed limit even though a few cars drive much faster or slower.
 
 The rules for the cellular automata were performed in two different parts at each time step.
-First, rules determining what lane changes are going to be performed are implemented. This was done by first calculating the desired lane change of each car and then
-performing the desired lane change only if the lane change can be performed safely.
-Secondly, rules determining how the various cars are going to change their velocity are implemented.
+First, rules determining what lane changes are going to be performed were implemented. This was done by first calculating the desired lane change of each car and then
+performing the desired lane change only if the lane change could be performed safely.
+Secondly, rules determining how the various cars are going to change their velocity were implemented.
 Each rule was implemented simultaneously on each car before moving on to the next rule. This means that the ordering of the rules is important, as latter rules can overrule previous decisions.
-In order to make the rules more compact we introduce the following notation
+In order to make the rules more compact we introduce the following notation:
 
 \begin{itemize}
     \item $x_i$ is the position of the i:th car
     \item $v_i$ is the velocity of the i:th car
-    \item $v_{i, max}$ is the maximum velocity of the i:th car.
-    \item $v_{back}$ is the velocity of the next car backward in the \textbf{new} desired lane.
-    \item $d_{forward}$ is the distance forward to the next car in the same lane as the car is currently in.
-    \item $d_{forward, left}$ is the distance forward to the next car in the lane to the left.
-    \item $d_{forward, right}$ is the distance forward to the next car in the lane to the right.
+    \item $v_{i, max}$ is the maximum velocity of the i:th car
+    \item $v_{back}$ is the velocity of the next car backward in the \textbf{new} desired lane
+    \item $d_{forward}$ is the distance forward to the next car in the same lane as the car is currently in
+    \item $d_{forward, left}$ is the distance forward to the next car in the lane to the left
+    \item $d_{forward, right}$ is the distance forward to the next car in the lane to the right
     \item $d_{backward}$ is the distance backward to next car in the \textbf{new} desired lane.
 \end{itemize}
 
@@ -185,7 +185,7 @@ The results can be seen below in figure \ref*{finite size effects}.
         \includegraphics[scale=0.47]{Images/fundamental diagrams 3 lanes 140.png}
         \captionof*{figure}{c) 3 lanes}
     \end{minipage}%
-    \caption{Average fundamental diagrams using different road lengths $L$ using 1, 2 and 3 lanes.}
+    \caption{Average fundamental diagrams for different road lengths $L$ using 1, 2 and 3 lanes.}
     \label{finite size effects}
 \end{figure}
 
@@ -193,14 +193,14 @@ In figure \ref*{finite size effects} we observe that the largest changes in the 
 peak of the fundamental diagrams when the average flow rate is maximal. In figure \ref*{finite size effects} a) when using only 1 lane it appears
 as if the system becomes independent of its size at approximately $L=60$, as we can no longer see a change in the fundamental diagrams when increasing
 $L$ beyond this value. When increasing the number of lanes a larger value of $L$ appears to be necessary to make the system independent of its size. 
-In figure \ref*{finite size effects} b) it appears as if $L=100$ is necessary before the fundamental diagrams stops changing when using 2 lanes. When increasing the number
+In figure \ref*{finite size effects} b) it appears as if $L=100$ is necessary before the fundamental diagrams stop changing when using 2 lanes. When increasing the number
 of lanes to 3 it appears as if $L=120$ is necessary before the fundamental diagrams stop changing, as can be seen in figure \ref*{finite size effects} c).
 We thus conclude that a road length of $L=120$ appears to be necessary in order to mitigate finite size effects, and therefore $L=120$ will be used
 in following simulations.
 
 \subsection*{Flow rate}
 We plot the flow rate over time while using road length $L=120$, and setting the number of cars to $n_{cars}=10, 30, 50$. This is done using 1, 2 and 3 lanes.
-The resulting plots of the flow rate against time can be seen below in figure \ref*{flowrate}
+The resulting plots of the flow rate against time can be seen below in figure \ref*{flowrate}.
 \begin{figure}[H]
     \centering
     \begin{minipage}{.5\textwidth}
@@ -255,13 +255,13 @@ number of lanes.
 
 We can also note that the gain in the flow rate acquired by increasing the number of lanes appears to be the same when increasing the number of lanes from 1 to 2 as when
 increasing the number of lanes from 2 to 3, given that the car density is larger than approximately 0.25 (where the flow rate using 3 lanes reaches its maximum value).
-For lower car densities the gain acquired by increasing the number of lanes depends on the car density.
+For lower car densities the gain in the flow rate acquired by increasing the number of lanes depends on the car density.
 
 \subsection*{Statistical accuracy}
-We will now examine the statistical accuracy by calculating the standard error. Just like in the previous section we initially run the simulation
+We will now examine the statistical accuracy by calculating the standard error of the average flow rate. Just like in the previous section we initially run the simulation
 using $n_{cars}=10, 30, 50$. Simulations are run for 200 time steps and the flow rate is calculated as an average over the last 100 time steps.
-We run the simulations a number of times and calculate the standard error of the flow rate values using 1, 2 and 3 lanes. Diagrams showing the
-standard error of the flow rate plotted against the number of simulations run are seen below in figure \ref*{standard error 1}.
+We run the simulations multiple times and calculate the standard error of the flow rate values using 1, 2 and 3 lanes. Diagrams showing the
+standard error of the flow rate plotted against the number of simulations are seen below in figure \ref*{standard error 1}.
 
 \begin{figure}[H]
     \centering
@@ -293,7 +293,7 @@ standard error of the flow rate plotted against the number of simulations run ar
 When using $n_{cars}=10$ it is clear that the standard error of the flow rate is much larger when using 1 lane compared to 2 or 3 lanes.
 When $n_{cars}=30$ the standard error is largest when using 2 lanes and the standard error when using 1 lane appears to have decreased.
 Setting the number of cars to $n_{cars}=50$ we instead see the highest standard error when using 3 lanes and lower standard error than before 
-when using 1 or 2 lanes. These large differences in the standard error depending on the number of lanes and the car density appear to 
+when using 2 lanes. These large differences in the standard error depending on the number of lanes and the car density appear to 
 be consistent with the results seen in figure \ref*{flowrate} in the previous section.
 
 To get a better understanding of how the standard error depends on the car density we calculate the standard error for varying car densities.
@@ -312,9 +312,9 @@ In figure \ref*{standard error} we notice that the plots of the standard error a
 in figure \ref*{fundamental diagram}. For all number of lanes, we initially see a clear increase of the standard error as the car density increases
 until a clear peak value is reached. Increasing the car density further makes the standard error decrease. When comparing the different number of lanes we primarily
 see two main differences. Firstly, we notice that the car density for which the standard error reaches its maximum value is larger when increasing the number of lanes.
-Secondly, we also notice that the value of the maximum standard error increases when increasing the number of lanes. If we compare the fundamental
-diagrams in figure \ref*{fundamental diagram} and figure \ref*{standard error} it appears as if the car densities for which the flow rates reach their maximum
-value are very similar to the car densities for which the standard errors reaches their maximum value. These results will be analyzed further in the discussion.
+Secondly, we also notice that the value of the maximum standard error increases when increasing the number of lanes. If we compare figure \ref*{standard error} with the fundamental
+diagrams in figure \ref*{fundamental diagram} it appears as if the car densities for which the flow rates reach their maximum
+values are very similar to the car densities for which the standard errors reaches their maximum values. These results will be analyzed further in the discussion.
 
 \section*{Discussion}
 \subsection*{Model discussion}
