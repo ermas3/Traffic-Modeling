@@ -8,6 +8,27 @@ import numpy as np
 class Cars:
     """ Class for storing the state of the cars on the road """
     def __init__(self, numCars=5, roadLength=50, v0=0, lanes=3, vmax=5, sigma=1):
+        """
+        Initializes the traffic simulation with a specified number of cars, road length, initial velocity, number of lanes, maximum velocity, and velocity randomness.
+        Parameters:
+            numCars (int): Number of cars in the simulation (default: 5).
+            roadLength (int): Length of the road (default: 50).
+            v0 (int): Initial velocity of all cars (default: 0).
+            lanes (int): Number of lanes on the road (default: 3).
+            vmax (int): Mean maximum velocity for cars (default: 5).
+            sigma (float): Standard deviation for randomizing car maximum velocities (default: 1).
+        Attributes:
+            vmax (np.ndarray): Array of randomized maximum velocities for each car.
+            numCars (int): Number of cars in the simulation.
+            roadLength (int): Length of the road.
+            lanes (int): Number of lanes on the road.
+            t (int): Simulation time step, initialized to 0.
+            x (list): List of car positions.
+            v (list): List of car velocities.
+            c (list): List of car colors (or identifiers).
+            l (list): List of lane assignments for each car.
+        """
+
         randomized_velocities = np.random.normal(vmax, sigma, numCars)
         self.vmax = (np.rint(randomized_velocities)).astype(int)
         self.numCars = numCars
@@ -22,7 +43,7 @@ class Cars:
             self.x.append(i)
             self.v.append(v0)
             self.c.append(i)
-            self.l.append(i%lanes) # Kanske borde ändra detta för att förebygga att alla bilar försöker vända åt vänster i början?
+            self.l.append(i%lanes)
 
     def distance_forward(self, i):
         """ Returns the distance to the next car in front of car i """
@@ -168,7 +189,7 @@ class BasePropagator:
         pass
 
 
-class MyPropagator(BasePropagator):
+class Propagator(BasePropagator):
     """Custom propagator implementing a cellular automaton model with lane changes."""
     def __init__(self, p, right_overtaking=True):
         BasePropagator.__init__(self)
@@ -324,7 +345,7 @@ def main() :
     simulation = Simulation(cars)
 
     # simulation.run_animate(propagator=ConstantPropagator())
-    simulation.run_animate(propagator=MyPropagator(p=0.2, right_overtaking=True), numsteps=500)
+    simulation.run_animate(propagator=Propagator(p=0.2, right_overtaking=True), numsteps=500)
 
     data = simulation.obs
 
