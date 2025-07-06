@@ -9,7 +9,8 @@ Cars are modelled as points on a road with periodic boundary conditions with the
 The purpose of the model is to provide insights into how parameters such as road length, car density and number of lanes affect traffic flow using a highly simplified model.
 
 ## Cellular automata
-![right turn](./report/Images/right turn.png)
+![Highway of cars](./report/Images/rt.png)
+
 The highway dynamics are simulated using a cellular automata. The road is represented by a discrete grid with periodic boundary conditions.
 
 ## Structure
@@ -18,4 +19,4 @@ The main
 ## How to use
 
 ## Report
-A report has been written based on the findings made by running a series of simulations of the model. 
+A report has been written based on the findings made by running a series of simulations of the model. The report focuses on investigating how car density and number of lanes affect the flow rate on the highway. The PDF, data and figures are all found in the [report](./report/) directory. 
